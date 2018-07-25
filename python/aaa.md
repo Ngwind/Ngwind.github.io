@@ -11,4 +11,4 @@ print(a)
 
 
 ## second
-下面将实验一个链接，点击[这里](www.baidu.com)转跳到百度
+下面将实验一个链接，点击[这里](http://www.baidu.com)转跳到百度
