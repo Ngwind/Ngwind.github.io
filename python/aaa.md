@@ -2,7 +2,7 @@
 
 ## first
 这是第一个标题下的文本,下面是将会是一个代码块：
-```
+```markdown
 a = "hello world"
 b = ["a", "b", "c"]
 print(a)
