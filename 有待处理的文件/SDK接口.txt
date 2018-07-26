@@ -1,0 +1,30 @@
+{"data":
+    {"select_server":
+        [
+             {"ip":"0",
+             "appVersion":"3.7.7.0",
+             "sdkVersion":"3.7.23.0",
+             "channelId":"270",
+             "nm":"WIFI",
+              "retry":1,
+             "roleLevel":"0",
+              "nickname":"",
+             "serverId":"999",
+             "uid":"2689258831",
+             "eventTime":"1529377226",
+              "msgId":"0",
+             "ic":"MeDoxfHk6LTJ8ejoxMDB8Yms6MHxjZDox"
+      }
+    ],
+     "common":{"eventId":"0","did":"863726035876487","gam
+                eId":"1374740944131310",
+                  "os":"android",
+                "osVersion":"6.0",
+                "device":"M5",
+                 "deviceType":"android",
+               "screen":"1280*720",
+                   "mno":"CMCC",
+                   "areaId":"1"
+                   }
+     }
+}
