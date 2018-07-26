@@ -29,7 +29,7 @@ print(a)
 ![pt](https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1532586215&di=36b4f6bca2f07d72cd81d68b523d83fd&src=http://a2.att.hudong.com/26/50/01300000329092123781509550216.jpg)
 
 <h4 id="1.1.1">1.1.1添加图片附件展示</h4>
-![asdf]()
+![baidu_log](./baidu_logo.png)
 
 <h3 id="1.2">1.2换行</h3>
 
