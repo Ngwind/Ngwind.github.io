@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="吴文达的博客">
+    <meta name="keyword"  content="测试">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        路由技术之静态路由 - Ngwind的博客 | Ngwind&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What doesn&#39;t kill you,make you stronger. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>wenda wu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-GNS3入门与安装"><span class="toc-text">0 GNS3入门与安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-IOS基础操作"><span class="toc-text">1 IOS基础操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-静态路由实验"><span class="toc-text">2 静态路由实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-配置默认路由-浮动路由"><span class="toc-text">3 配置默认路由+浮动路由</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What doesn&#39;t kill you,make you stronger. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        路由技术之静态路由
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-09-07 09:36:17</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#拼客学院" title="拼客学院">拼客学院</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="0-GNS3入门与安装"><a href="#0-GNS3入门与安装" class="headerlink" title="0 GNS3入门与安装"></a>0 GNS3入门与安装</h3><h3 id="1-IOS基础操作"><a href="#1-IOS基础操作" class="headerlink" title="1 IOS基础操作"></a>1 IOS基础操作</h3><p><img src="/img/201809070927.png" alt=""></p>
+<ol>
+<li>为R1和R2配置接口ip地址，打开接口</li>
+<li>安装wireshark并集成到GNS3里面</li>
+<li>抓取R1和R2之间的通讯数据，并通过wireshark进行分析</li>
+<li>将R2设置为telnet服务器，并从R1远程登陆R2</li>
+</ol>
+<h3 id="2-静态路由实验"><a href="#2-静态路由实验" class="headerlink" title="2 静态路由实验"></a>2 静态路由实验</h3><p><img src="/img/1536283934.png" alt=""></p>
+<ol>
+<li>配置R1和R2的直连ip地址，保证直连ping通</li>
+</ol>
+<p>R1#<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conf t</span><br><span class="line">int f0/0</span><br><span class="line">ip<span class="built_in"> address </span>12.1.1.1 255.255.255.0</span><br><span class="line"><span class="literal">no</span> shutdown</span><br></pre></td></tr></table></figure></p>
+<p>R2#<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">conf t</span><br><span class="line">int f0/0</span><br><span class="line">ip<span class="built_in"> address </span>12.1.1.2 255.255.255.0</span><br><span class="line"><span class="literal">no</span> shutdown</span><br></pre></td></tr></table></figure></p>
+<p>R1#<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ping</span> 12<span class="selector-class">.1</span><span class="selector-class">.1</span><span class="selector-class">.2</span></span><br></pre></td></tr></table></figure></p>
+<p>R1#<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ping</span> 12<span class="selector-class">.1</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>通过loopback口，模拟局域网主机</li>
+</ol>
+<p>R1#</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int lo 1</span><br><span class="line">ip <span class="builtin-name">add</span> 1.1.1.1 255.255.255.0 </span><br><span class="line">show<span class="built_in"> ip interface </span>biref</span><br></pre></td></tr></table></figure>
+<p>R2#</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int lo 1</span><br><span class="line">ip <span class="builtin-name">add</span> 2.2.2.2 255.255.255.0 </span><br><span class="line">show<span class="built_in"> ip interface </span>biref</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>为R1和R2设置静态路由</li>
+</ol>
+<p>R1#<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip<span class="built_in"> route </span>2.2.2.0 255.255.255.0 f0/0</span><br></pre></td></tr></table></figure></p>
+<p>R2#<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip<span class="built_in"> route </span>1.1.1.0 255.255.255.0 f0/0</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>查看路由表</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show<span class="built_in"> ip </span>route</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>最终要求主机之间能够相互ping通。(带源ping)</li>
+</ol>
+<p>R1#<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ping</span> 2<span class="selector-class">.2</span><span class="selector-class">.2</span><span class="selector-class">.2</span> <span class="selector-tag">soure</span> 1<span class="selector-class">.1</span><span class="selector-class">.1</span><span class="selector-class">.1</span></span><br></pre></td></tr></table></figure></p>
+<p>R2#<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ping</span> 1<span class="selector-class">.1</span><span class="selector-class">.1</span><span class="selector-class">.1</span> <span class="selector-tag">soure</span> 2<span class="selector-class">.2</span><span class="selector-class">.2</span><span class="selector-class">.2</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-配置默认路由-浮动路由"><a href="#3-配置默认路由-浮动路由" class="headerlink" title="3 配置默认路由+浮动路由"></a>3 配置默认路由+浮动路由</h3><p><img src="/img/201809070933.jpg" alt=""></p>
+<ol>
+<li>配置直连ip地址，保证直连ping通</li>
+<li>在R2上创建换回接口，模拟互联网服务器</li>
+<li>在R1上部署默认路由，实现R1访问互联网所有服务器</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip<span class="built_in"> route </span>0.0.0.0 0.0.0.0 12.1.1.12</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在R1上部署浮动路由，实现主备链路切换</li>
+</ol>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> <span class="number">13.1</span><span class="number">.1</span><span class="number">.13</span> <span class="number">100</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在R1上查看路由表</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show<span class="built_in"> ip </span>route</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>验证主备切换效果</li>
+</ol>
+<p>调试ping包</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">debug</span><span class="built_in"> ip </span>icmp</span><br></pre></td></tr></table></figure>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/wu-wen-da-54">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/6502350892">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/Ngwind">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: '路由技术之静态路由',
+        owner: 'Ngwind',
+        repo: 'Ngwind.github.io',
+        oauth: {
+            client_id: 'ec0f1527ca1d1cfb8bf8',
+            client_secret: '5eafc4a4871101ebf8157a5e65fcb25fe2717683',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

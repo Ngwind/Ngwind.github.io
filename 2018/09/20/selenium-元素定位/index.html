@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="吴文达的博客">
+    <meta name="keyword"  content="测试">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        selenium-元素定位 - Ngwind的博客 | Ngwind&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What doesn&#39;t kill you,make you stronger. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>wenda wu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#元素定位方法"><span class="toc-text">元素定位方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过ID查找元素"><span class="toc-text">通过ID查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过name查找元素"><span class="toc-text">通过name查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过Xpath查找元素"><span class="toc-text">通过Xpath查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过link-text查找元素"><span class="toc-text">通过link text查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过tag-name查找元素"><span class="toc-text">通过tag name查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过class-name查找元素"><span class="toc-text">通过class name查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过css选择器查找元素"><span class="toc-text">通过css选择器查找元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用elements查找多个"><span class="toc-text">用elements查找多个</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通用的查找方法"><span class="toc-text">通用的查找方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What doesn&#39;t kill you,make you stronger. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        selenium-元素定位
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-09-20 11:17:44</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#selenium" title="selenium">selenium</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=423226&auto=0&height=32"></iframe>
+
+<h2 id="元素定位方法"><a href="#元素定位方法" class="headerlink" title="元素定位方法"></a>元素定位方法</h2><p>上一节我们已经配置好了环境并且可以通过脚本打开浏览器了，说明我们已经打开了自动化测试的大门，接下来就开始学习如何定位页面元素。</p>
+<p>html页面是由一个个的标签组成的，我们定位元素其实就是定位这些标签。selenium提供了8种查找定位元素的方法：</p>
+<ul>
+<li>ID</li>
+<li>name</li>
+<li>Xpath</li>
+<li>link test</li>
+<li>partial link test</li>
+<li>tag name</li>
+<li>Class name</li>
+<li>CSS selector  </li>
+</ul>
+<blockquote>
+<p>最好的学习方法还是去源码！这写方法的使用方式，在源码注释中都有说明。</p>
+<p>在selenium包-&gt;webdriver文件夹-&gt;remote文件夹-&gt;webdriver.py</p>
+</blockquote>
+<p>为了方便演示，创建一个thml文件，文件内容如下：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span>Site content goes here.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"loginForm"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">type</span>=<span class="string">"text"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">type</span>=<span class="string">"password"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"continue"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Login"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"continue"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Clear"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Are you sure you want to do this?<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"continue.html"</span>&gt;</span>Continue<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"cancel.html"</span>&gt;</span>Cancel<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>提前介绍一下,这些函数都是通过webdriver对象来调用的，所以我们要先获得一个webdriver对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">"file://C:/Users/Administrator/Desktop/learn-selenium.html"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="通过ID查找元素"><a href="#通过ID查找元素" class="headerlink" title="通过ID查找元素"></a>通过ID查找元素</h2><p>对于属性有id的元素（标签），我们可用通过id查找元素。函数为<code>find_element_by_id(arg)</code>.这个方法会返回页面中第一个被匹配的元素对象。如果找不到任何元素，则抛出NoSuchElementException异常</p>
+<p>例如，可以通过下面的方式定位到from元素：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem_form = driver.find_element_by_id(<span class="string">"loginForm"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="通过name查找元素"><a href="#通过name查找元素" class="headerlink" title="通过name查找元素"></a>通过name查找元素</h2><p>对于属性有name的元素（标签），我们可用通过name查找元素。函数为<code>find_element_by_name(arg)</code>.这个方法会返回页面中第一个被匹配的元素对象。如果找不到任何元素，则抛出NoSuchElementException异常</p>
+<p>例如，可以通过下面的方式定位元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">elem_username = driver.find_element_by_name(<span class="string">"username"</span>)</span><br><span class="line">elem_password = driver.find_element_by_name(<span class="string">"password"</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="通过Xpath查找元素"><a href="#通过Xpath查找元素" class="headerlink" title="通过Xpath查找元素"></a>通过Xpath查找元素</h2><p>XPath是XML文档中查找结点的语法。因为HTML文档也可以被转换成XML(XHTML)文档， Selenium的用户可以利用这种强大的语言在web应用中查找元素。 XPath扩展了（当然也支持）这种通过id或name属性获取元素的简单方式，同时也开辟了各种新的可能性， 例如获取页面上的第三个复选框。</p>
+<p>使用XPath的主要原因之一就是当你想获取一个既没有id属性也没有name属性的元素时， 你可以通过XPath使用元素的绝对位置来获取他（这是不推荐的），或相对于有一个id或name属性的元素 （理论上的父元素）的来获取你想要的元素。XPath定位器也可以通过非id和name属性查找元素。</p>
+<p>绝对的XPath是所有元素都从根元素的位置（HTML）开始定位，只要应用中有轻微的调整，会就导致你的定位失败。 但是通过就近的包含id或者name属性的元素出发定位你的元素，这样相对关系就很靠谱， 因为这种位置关系很少改变，所以可以使你的测试更加强大。</p>
+<p>函数为<code>find_element_by_xpath(arg)</code>.arg为xpath表达式。</p>
+<p>例如，通过下面方式定位元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clear_button = driver.find_element_by_xpath(<span class="string">"//input[@name='continue'][@type='button']"</span>)</span><br><span class="line">elem_p = driver.find_element_by_xpath(<span class="string">"//p"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>通过xpath查找定位的方式很强大，不过要用好xpath定位，还需要进一步掌握xpath的语法。</p>
+<blockquote>
+<p>学习xpath定位:<a href="https://www.jianshu.com/p/89c10770d72c" target="_blank" rel="noopener">https://www.jianshu.com/p/89c10770d72c</a></p>
+</blockquote>
+<h2 id="通过link-text查找元素"><a href="#通过link-text查找元素" class="headerlink" title="通过link text查找元素"></a>通过link text查找元素</h2><p>当你知道在一个锚标签中使用的链接文本时，可以使用链接文本定位。页面中第一个匹配链接内容锚标签会被匹配并返回。如果找不到任何元素，会抛出<code>NoSuchElementException</code>异常。</p>
+<p>使用<code>find_element_by_link_text(arg)</code>,返回链接文本匹配arg的标签。此外，也可以使用<code>find_element_by_partial_link_text(arg)</code>,返回链接文本包含arg的标签。</p>
+<p>例如，通过下面方式定位元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">continue_link = driver.find_element_by_link_text(<span class="string">'Continue'</span>)</span><br><span class="line">continue_link = driver.find_element_by_partial_link_text(<span class="string">'Conti'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="通过tag-name查找元素"><a href="#通过tag-name查找元素" class="headerlink" title="通过tag name查找元素"></a>通过tag name查找元素</h2><p>如果你想通过标签名来定位元素，可以使用函数<code>find_element_by_tag_name(arg)</code>.不过这个方法定位不是很好用，毕竟页面中的同tag有很多个嘛.同样，如果找不到任何元素，会抛出<code>NoSuchElementException</code>异常。</p>
+<p>例如，通过下面方式定位元素：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem_form_tag = driver.find_element_by_tag_name(<span class="string">"form"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="通过class-name查找元素"><a href="#通过class-name查找元素" class="headerlink" title="通过class name查找元素"></a>通过class name查找元素</h2><p>对于属性有class的元素（标签），我们可用通过class查找元素。函数为<code>find_element_by_class_name(arg)</code>.这个方法会返回页面中第一个被匹配的元素对象。如果找不到任何元素，则抛出NoSuchElementException异常。</p>
+<p>例如，通过下面方式定位元素：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem_content = driver.find_element_by_class_name(<span class="string">"content"</span>)</span><br></pre></td></tr></table></figure>
+<p>但是，在实际情况下有些元素会有多个class，这时候不能定位成功，一般较少用classname进行定位查找。</p>
+<h2 id="通过css选择器查找元素"><a href="#通过css选择器查找元素" class="headerlink" title="通过css选择器查找元素"></a>通过css选择器查找元素</h2><p>通过css selector来查找也是一种强大的方法，它和xpath不相上下。函数为<code>find_element_by_css_selector(arg)</code>.这个方法会返回页面中第一个被匹配的元素对象。如果找不到任何元素，则抛出NoSuchElementException异常。</p>
+<p>例如，通过下面方式定位元素：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem_continue_css = driver.find_element_by_css_selector(<span class="string">"p.content"</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="用elements查找多个"><a href="#用elements查找多个" class="headerlink" title="用elements查找多个"></a>用elements查找多个</h2><p>webdriver中还有一类函数，它和find_element_by类似，不过这类函数不是返回单个匹配的元素，而是返回所有匹配的元素组成的列表。只要把element改成elements就可以了。例如：<code>find_elements_by_xpath()</code>、<code>find_elements_by_id()</code>等等。</p>
+<h2 id="通用的查找方法"><a href="#通用的查找方法" class="headerlink" title="通用的查找方法"></a>通用的查找方法</h2><p>可以使用webdriver的<code>find_element(by,arg)</code>函数。By类中可以选择定位的方法（上面提到的8种），arg为匹配的字符串。不过，官方文档中建议我们优先使用上面的具体定位方法。</p>
+<p>此外，也有<code>find_elements(by,arg)</code>函数，返回所有匹配元素组成的列表。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>定位元素是web自动化的重要基础，需要熟练掌握，多多练习。定位元素的方法有很多，特别要掌握xpath或css selector这两种强大的定位方式。认真学习xpath的语法吧!</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/wu-wen-da-54">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/6502350892">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/Ngwind">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'selenium-元素定位',
+        owner: 'Ngwind',
+        repo: 'Ngwind.github.io',
+        oauth: {
+            client_id: 'ec0f1527ca1d1cfb8bf8',
+            client_secret: '5eafc4a4871101ebf8157a5e65fcb25fe2717683',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="吴文达的博客">
+    <meta name="keyword"  content="测试">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Python之闭包、装饰器 - Ngwind的博客 | Ngwind&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What doesn&#39;t kill you,make you stronger. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>wenda wu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是闭包"><span class="toc-text">什么是闭包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#举例闭包的使用场景"><span class="toc-text">举例闭包的使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nonlocal语句"><span class="toc-text">nonlocal语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#装饰器模式"><span class="toc-text">装饰器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#闭包的作用"><span class="toc-text">闭包的作用</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What doesn&#39;t kill you,make you stronger. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Python之闭包、装饰器
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-09-18 14:41:25</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python" title="python">python</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h2><p>在计算机科学中，闭包（Closure）是词法闭包（Lexical Closure）的简称，是引用了自由变量的函数。这个被引用的自由变量将和这个函数一同存在，即使已经离开了创造它的环境也不例外。所以，有另一种说法认为闭包是由函数和与其相关的引用环境组合而成的实体。闭包在运行时可以有多个实例，不同的引用环境和相同的函数组合可以产生不同的实例。</p>
+<p>上面提到了两个关键的地方： 自由变量 和 函数, 这两个关键稍后再说。还是得在赘述下“闭包”的意思，望文知意，可以形象的把它理解为一个封闭的包裹，这个包裹就是一个函数，当然还有函数内部对应的逻辑，包裹里面的东西就是自由变量，自由变量可以在随着包裹到处游荡。当然还得有个前提，这个包裹是被创建出来的。</p>
+<p>再通过Python的语言介绍一下，一个闭包就是你调用了一个函数A，这个函数A返回了一个函数B给你。这个返回的函数B就叫做闭包。你在调用函数A的时候传递的参数就是自由变量。<br>举个栗子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(n)</span>:</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fb</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> n+num</span><br><span class="line">    <span class="keyword">return</span> fb</span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line">f = fa(<span class="number">1</span>)</span><br><span class="line">print(<span class="string">"f不是直接等于2，而是一个函数,f:"</span>, f)</span><br><span class="line">print(<span class="string">"f()返回结果才等于2,f():"</span>, f())</span><br></pre></td></tr></table></figure>
+<p>调用fa的时候就产生了一个闭包fb，并且该闭包持有自由变量num，因此这意味着，当函数func的生命周期结束之后，name这个变量依旧存在，因为他被闭包引用了，所以不会回收。</p>
+<h2 id="举例闭包的使用场景"><a href="#举例闭包的使用场景" class="headerlink" title="举例闭包的使用场景"></a>举例闭包的使用场景</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_150</span><span class="params">(val)</span>:</span>   <span class="comment"># 总分为150时，及格分数为90</span></span><br><span class="line">    passline = <span class="number">90</span></span><br><span class="line">    <span class="keyword">if</span> val &gt;= passline:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"pass"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"fail"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func_100</span><span class="params">(val)</span>:</span>   <span class="comment"># 总分为100时，及格分数为60</span></span><br><span class="line">    passline = <span class="number">60</span> </span><br><span class="line">    <span class="keyword">if</span> val &gt;= passline:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"pass"</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"fail"</span></span><br><span class="line"></span><br><span class="line">func_100(<span class="number">89</span>)  </span><br><span class="line">func_150(<span class="number">89</span>)</span><br><span class="line">使用闭包优化上面的代码：</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_passline</span><span class="params">(passline)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cmp</span><span class="params">(val)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> val &gt;= passline:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"pass"</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"fail"</span></span><br><span class="line">    <span class="keyword">return</span> cmp</span><br><span class="line"></span><br><span class="line">f_100 = set_passline(<span class="number">60</span>)    <span class="comment"># f_100调用函数set_passline()，并将60赋值给变量passline,这是f_100等于函数的返回值，也就是函数cmp</span></span><br><span class="line">f_150 = set_passline(<span class="number">90</span>)</span><br><span class="line">f_100(<span class="number">89</span>)     <span class="comment"># f_100()=cmp(),将89赋值给val，运行cmp()函数，输出结果</span></span><br><span class="line">f_150(<span class="number">89</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="nonlocal语句"><a href="#nonlocal语句" class="headerlink" title="nonlocal语句"></a>nonlocal语句</h2><p>在python的函数内，可以直接<em>引用</em>外部变量，但是不能<em>改写</em>外部变量，因此如果在闭包中直接改写父函数的变量，就会发生错误，例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(n)</span>:</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fb</span><span class="params">()</span>:</span></span><br><span class="line">        num = num+<span class="number">1</span> <span class="comment"># 这里会出错！ 改写了外部变量！</span></span><br><span class="line">        <span class="keyword">return</span> n+num</span><br><span class="line">    <span class="keyword">return</span> fb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line">f = fa(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>在python2中可以在函数内使用global语句，但是全局变量在任何语言中都不被提倡，因为它很难控制，python3中引入了nonlocal语句来解决这个问题：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fa</span><span class="params">(n)</span>:</span></span><br><span class="line">    num = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fb</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">nonlocal</span> num  <span class="comment">#　声明了nonlocal不会报错了</span></span><br><span class="line">        num = num+<span class="number">1</span> </span><br><span class="line">        <span class="keyword">return</span> n+num</span><br><span class="line">    <span class="keyword">return</span> fb</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码：</span></span><br><span class="line">f = fa(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>nonlocal与global的区别在与nonlocal语句回去搜寻本地变量与全局变量之间的变量，其会优先寻找层级关系与闭包作用域最近的外部变量。</p>
+<h2 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h2><p>装饰器是函数闭包的一种应用。装饰器函数用来装饰一般函数（给一个函数增加额外的功能），然后返回新的函数对象给函数本身。具体还是看代码演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span> <span class="comment"># 定义装饰器函数,输出函数的开始时间和结束时间</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">after_decor</span><span class="params">()</span>:</span></span><br><span class="line">        print(func.__name__, <span class="string">"start:"</span>)</span><br><span class="line">        func()</span><br><span class="line">        print( func.__name__, <span class="string">"end..."</span>)</span><br><span class="line">    <span class="keyword">return</span> after_decor</span><br><span class="line"></span><br><span class="line"><span class="meta">@decorator</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bark</span><span class="params">()</span>:</span>  <span class="comment"># 定义bark函数，然后使用decorator函数来装饰他</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        print(<span class="string">"Wooo~"</span>)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试代码</span></span><br><span class="line">bark()  <span class="comment">#　调用bark函数</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bark </span>start:</span><br><span class="line"><span class="symbol">Wooo</span>~</span><br><span class="line"><span class="symbol">Wooo</span>~</span><br><span class="line"><span class="symbol">Wooo</span>~</span><br><span class="line"><span class="keyword">bark </span><span class="meta">end</span>...</span><br></pre></td></tr></table></figure>
+<h2 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h2><p>闭包的最大特点是可以将父函数的变量与内部函数绑定，并返回绑定变量后的函数（也即闭包），此时即便生成闭包的环境（父函数）已经释放，闭包仍然存在，这个过程很像类（父函数）生成实例（闭包），不同的是父函数只在调用时执行，执行完毕后其环境就会释放，而类则在文件执行时创建，一般程序执行完毕后作用域才释放，因此对一些需要重用的功能且不足以定义为类的行为，使用闭包会比使用类占用更少的资源，且更轻巧灵活</p>
+<p>闭包可以避免全局变量的使用。</p>
+<p>对闭包的理解还是需要多多实践，多多体会。</p>
+<blockquote>
+<p>本文参考:<br><a href="http://www.mylanbitou.top/blog/detail/3/#Coon" target="_blank" rel="noopener">http://www.mylanbitou.top/blog/detail/3/#Coon</a></p>
+</blockquote>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/wu-wen-da-54">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/6502350892">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/Ngwind">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'Python之闭包、装饰器',
+        owner: 'Ngwind',
+        repo: 'Ngwind.github.io',
+        oauth: {
+            client_id: 'ec0f1527ca1d1cfb8bf8',
+            client_secret: '5eafc4a4871101ebf8157a5e65fcb25fe2717683',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="吴文达的博客">
+    <meta name="keyword"  content="测试">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Python之OS模块【一】 - Ngwind的博客 | Ngwind&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What doesn&#39;t kill you,make you stronger. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>wenda wu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-前言"><span class="toc-text">0 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-os-path"><span class="toc-text">1 os.path</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-导入os模块"><span class="toc-text">1.1 导入os模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-常用函数介绍"><span class="toc-text">1.2 常用函数介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#exists-path"><span class="toc-text">exists(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#abspath-path"><span class="toc-text">abspath(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#split-path"><span class="toc-text">split(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dirname-path"><span class="toc-text">dirname(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#basename-path"><span class="toc-text">basename(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getsize-path"><span class="toc-text">getsize(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#getatime-path-getctime-path-getmtime-path"><span class="toc-text">getatime(path),getctime(path),getmtime(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#isabs-isfile-isdir-islink-ismount"><span class="toc-text">isabs,isfile,isdir,islink,ismount</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#commonpath-paths-、commonprefix-list"><span class="toc-text">commonpath(paths)、commonprefix(list)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-其他"><span class="toc-text">2 其他</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What doesn&#39;t kill you,make you stronger. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Python之OS模块【一】
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-08-01 11:00:35</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python" title="python">python</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h2><p>学习了一定的python语言基础后，我们开始学习一些Python标准库中的常用模块。本次介绍OS模块。OS模块主要用于程序与操作系统之间的交互。<br>OS模块使得我们能用相同的代码与不同的操作系统交互。因为OS模块帮我们透明化了不同操作系统的差异。比如我们可使用os.path中的方法对操作系统进行路径操作，不用担心window、linux、mac操作系统路径语法的差异。<br>os.path这个对象其实是根据不同操作系统导入了不同的路径操作模块（ntpath.py、posixpath.py）</p>
+<p><img src="/img/2018-08-01 111351.png" alt=""></p>
+<p>这段os.py中的源码展示了如何根据不同的操作系统，执行 <code>improt ntpath as path</code>还是<code>import posixpath as path</code>，这样对我们来说，不管是linux还是window，我们只要使用path就可以了。os模块正是通过这种方式统一了接口。</p>
+<p>这篇文章先来讲解os模块中os.path的使用。</p>
+<hr>
+<h2 id="1-os-path"><a href="#1-os-path" class="headerlink" title="1 os.path"></a>1 os.path</h2><p>os.path模块对路径操作实现一些有用的功能。</p>
+<h3 id="1-1-导入os模块"><a href="#1-1-导入os模块" class="headerlink" title="1.1 导入os模块"></a>1.1 导入os模块</h3><p>os.path是通过os模块来导入的。像之前解释的，os.path本质上是ntpath或者posixpath模块，只不过os模块中帮我们导入了ntpath或者posixpath模块。</p>
+<p>在代码中输入下面的代码导入模块：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br></pre></td></tr></table></figure></p>
+<p>此外，为了方便演示，我在我的project文件中先创建了一些文件路径：</p>
+<p><img src="/img/2018-08-01 112710.png" alt=""></p>
+<p>我用来演示的py文件名为os_test.py。</p>
+<p>创建了文件路径后，我们在代码中定义一个字符串变量<code>path</code>来表示这个路径<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  演示用的路径</span></span><br><span class="line">path = <span class="string">"aaa/bbb/ccc/ddd.py"</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-常用函数介绍"><a href="#1-2-常用函数介绍" class="headerlink" title="1.2 常用函数介绍"></a>1.2 常用函数介绍</h3><p>接下来介绍os.path中常用的函数。想全面的了解，最好的办法还是阅读源码和官方文档。</p>
+<blockquote>
+<p>源码：可以在pychram中打开源码查看</p>
+</blockquote>
+<blockquote>
+<p>官方文档：<a href="https://docs.python.org/3/library/os.path.html" target="_blank" rel="noopener">https://docs.python.org/3/library/os.path.html</a></p>
+</blockquote>
+<blockquote>
+<p>一些翻译成中文的文档：</p>
+<ul>
+<li><a href="https://yiyibooks.cn/xx/python_352/index.html" target="_blank" rel="noopener">https://yiyibooks.cn/xx/python_352/index.html</a>;</li>
+<li><a href="https://www.rddoc.com/doc/Python/3.6.0/zh/library/os.path/" target="_blank" rel="noopener">https://www.rddoc.com/doc/Python/3.6.0/zh/library/os.path/</a></li>
+</ul>
+</blockquote>
+<h4 id="exists-path"><a href="#exists-path" class="headerlink" title="exists(path)"></a>exists(path)</h4><p>exists函数判断path是否存在。返回bool类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.exists(path))</span><br><span class="line">print(os.path.exists(<span class="string">"/aaa/bbb/ccc"</span>))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="abspath-path"><a href="#abspath-path" class="headerlink" title="abspath(path)"></a>abspath(path)</h4><p>abspath函数返回一个标准的path路径的绝对路径。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.abspath(path))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\PycharmProjects\practise_20180731\aaa\bbb\ccc\ddd.py</span><br></pre></td></tr></table></figure>
+<h4 id="split-path"><a href="#split-path" class="headerlink" title="split(path)"></a>split(path)</h4><p>split函数将path拆分成dirname和basename,返回二元元组</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.split(path))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="string">'aaa/bbb/ccc'</span>, <span class="string">'ddd.py'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="dirname-path"><a href="#dirname-path" class="headerlink" title="dirname(path)"></a>dirname(path)</h4><p>dirname函数返回path的目录名。实际上是通过将path参数传递个 split()函数得到的返回值的第一个元素.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.dirname(path))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aaa/bbb/ccc</span><br></pre></td></tr></table></figure>
+<h4 id="basename-path"><a href="#basename-path" class="headerlink" title="basename(path)"></a>basename(path)</h4><p>返回路径名path的最后一级的名称。它为将path参数传递给split()函数返回的元组对的第二个元素。请注意，这个函数的结果不同于Unix的basename程序；对于’/foo/bar/‘，Unix的basename返回’bar’，而basename()函数返回空字符串（’’）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.basename(path))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ddd.py</span><br></pre></td></tr></table></figure>
+<h4 id="getsize-path"><a href="#getsize-path" class="headerlink" title="getsize(path)"></a>getsize(path)</h4><p>返回path的大小，以字节为单位。如果文件不存在或无法访问，则引发OSError。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.getsize(path))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">50</span></span><br></pre></td></tr></table></figure>
+<h4 id="getatime-path-getctime-path-getmtime-path"><a href="#getatime-path-getctime-path-getmtime-path" class="headerlink" title="getatime(path),getctime(path),getmtime(path)"></a>getatime(path),getctime(path),getmtime(path)</h4><p>getatime, getctime, getmtime三个函数分别返回文件的最后访问、创建、修改时间，path无效则抛出OSError<br>可以使用time.gmtime()来以struct_time形式输出最近修改时间（不过要额外导入time模块<code>import time</code>）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.getatime(path))</span><br><span class="line">print(time.gmtime(os.path.getatime(path)))</span><br><span class="line">print(time.gmtime(os.path.getctime(path)))</span><br><span class="line">print(time.gmtime(os.path.getmtime(path)))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1533089540.9916</span></span><br><span class="line">time.struct_time(tm_year=<span class="number">2018</span>, tm_mon=<span class="number">8</span>, tm_mday=<span class="number">1</span>, tm_hour=<span class="number">2</span>, tm_min=<span class="number">12</span>, tm_sec=<span class="number">20</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">213</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line">time.struct_time(tm_year=<span class="number">2018</span>, tm_mon=<span class="number">8</span>, tm_mday=<span class="number">1</span>, tm_hour=<span class="number">2</span>, tm_min=<span class="number">11</span>, tm_sec=<span class="number">51</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">213</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line">time.struct_time(tm_year=<span class="number">2018</span>, tm_mon=<span class="number">8</span>, tm_mday=<span class="number">1</span>, tm_hour=<span class="number">2</span>, tm_min=<span class="number">12</span>, tm_sec=<span class="number">20</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">213</span>, tm_isdst=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="isabs-isfile-isdir-islink-ismount"><a href="#isabs-isfile-isdir-islink-ismount" class="headerlink" title="isabs,isfile,isdir,islink,ismount"></a>isabs,isfile,isdir,islink,ismount</h4><p>isabs,isfile,isdir,islink,ismount函数分别判断path是否为绝对路径，常规文件，文件夹，链接，挂载点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.isabs(path))</span><br><span class="line">print(os.path.isfile(path))</span><br><span class="line">print(os.path.isdir(path))</span><br><span class="line">print(os.path.islink(path))</span><br><span class="line">print(os.path.ismount(path))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="commonpath-paths-、commonprefix-list"><a href="#commonpath-paths-、commonprefix-list" class="headerlink" title="commonpath(paths)、commonprefix(list)"></a>commonpath(paths)、commonprefix(list)</h4><p>commonpath返回paths参数序列中，所有路径序列中共有的最长的路径.如果 paths 即包含绝对路径又包含相对路径,或者 paths 为空将抛出ValueError.不同于 commonprefix()函数, commonpath()返回一个有效的路径.</p>
+<p>commonprefix返回列表中所有路径的前缀的最长路径前缀（逐个字符）。如果列表为空，则返回空字符串（’’）。此函数可能返回无效路径，因为它一次处理一个字符。要获取有效路径，请参阅commonpath()。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">print(os.path.commonpath([<span class="string">"/aaa/bbb"</span>, <span class="string">"/aaa/bbb/ccc"</span>]))</span><br><span class="line"></span><br><span class="line">print(os.path.commonprefix([<span class="string">"/aaa/bbb"</span>, <span class="string">"/aaa/bbb/ccc"</span>]))</span><br><span class="line">print(os.path.commonprefix([<span class="string">""</span>]))</span><br><span class="line">print(os.path.commonprefix([<span class="string">"/aaa/bbc"</span>, <span class="string">"/aaa/bbb/ccc"</span>]))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\aaa\bbb</span><br><span class="line">/aaa/bbb</span><br><span class="line"></span><br><span class="line">/aaa/bb</span><br></pre></td></tr></table></figure>
+<h2 id="2-其他"><a href="#2-其他" class="headerlink" title="2 其他"></a>2 其他</h2><p>下一篇文章将会介绍os模块的其他功能，比如：新建、删除、重命名、查询文件或文件夹 还有调用系统命令等</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/wu-wen-da-54">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/6502350892">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/Ngwind">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'Python之OS模块【一】',
+        owner: 'Ngwind',
+        repo: 'Ngwind.github.io',
+        oauth: {
+            client_id: 'ec0f1527ca1d1cfb8bf8',
+            client_secret: '5eafc4a4871101ebf8157a5e65fcb25fe2717683',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="吴文达的博客">
+    <meta name="keyword"  content="测试">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Python之OS模块【二】 - Ngwind的博客 | Ngwind&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What doesn&#39;t kill you,make you stronger. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>wenda wu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0-前言"><span class="toc-text">0 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-常用属性"><span class="toc-text">1 常用属性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-os-name"><span class="toc-text">1.1 os.name</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-os-environ"><span class="toc-text">1.2 os.environ</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-常用方法"><span class="toc-text">2 常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-os-access-path-mode"><span class="toc-text">2.1 os.access(path,mode)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-os-getcwd"><span class="toc-text">2.2 os.getcwd()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-os-chdir-path"><span class="toc-text">2.3 os.chdir(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-os-chmod-path-mode"><span class="toc-text">2.4 os.chmod(path,mode)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-os-chown-path-uid-gid"><span class="toc-text">2.5 os.chown(path, uid, gid)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-os-listdir-path"><span class="toc-text">2.6 os.listdir(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-os-mkdir-path-mode"><span class="toc-text">2.7 os.mkdir(path, mode)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-os-rmdir-path"><span class="toc-text">2.8 os.rmdir(path)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-os-rename-src-dst"><span class="toc-text">2.9 os.rename(src, dst)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-10-os-system-command"><span class="toc-text">2.10 os.system(command)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-其他"><span class="toc-text">3 其他</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What doesn&#39;t kill you,make you stronger. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Python之OS模块【二】
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-08-03 23:59:41</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python" title="python">python</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h3 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h3><p>上一篇文章介绍了os模块中os.path的使用。这篇文章我们来讲解os模块的使用。主要介绍使用os模块完成对系统文件的操作。os中很多常用方法的功能类似linux中命令：ls、pwd、cd、mkdir、rmdir、chown、chmod、等等…<br>接下来简单介绍os模块中一些属性和常用的方法。</p>
+<hr>
+<h3 id="1-常用属性"><a href="#1-常用属性" class="headerlink" title="1 常用属性"></a>1 常用属性</h3><h4 id="1-1-os-name"><a href="#1-1-os-name" class="headerlink" title="1.1 os.name"></a>1.1 os.name</h4><p>os.name可以表示当前操作系统类型。其实它是导入的操作系统相关模块的名称。比如：<code>os.name = &quot;posix&quot;</code>表示linux系统，<code>os.name = &quot;nt&quot;</code>表示window系统。</p>
+<p>示例代码如下(我在window下演示)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  os.name表示当前系统名</span></span><br><span class="line">print(os.name)</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nt</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-2-os-environ"><a href="#1-2-os-environ" class="headerlink" title="1.2 os.environ"></a>1.2 os.environ</h4><p>os.environ是一个储存系统环境变量的mapping对象。可以使用<code>os.environ[&quot;系统环境变量的key&quot;]</code>来使用特定的变量。</p>
+<p>代码示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  查看环境变量。environ是一个mapping类型对象，保</span></span><br><span class="line">print(os.environ)                </span><br><span class="line"><span class="comment">#  例如使用environ["homepath"]查看主目录名称</span></span><br><span class="line">print(os.environ[<span class="string">'homepath'</span>])    </span><br><span class="line">print(os.environ[<span class="string">'classpath'</span>])</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">environ(&#123;<span class="string">'ALLUSERSPROFILE'</span>: <span class="string">'C:\\ProgramData'</span>, <span class="string">'ANT_HOME'</span>: <span class="string">'D:\\apache-ant-1.10.3'</span>, <span class="string">'APPDATA'</span>: <span class="string">'C:\\Users\\dar\\AppData\\Roaming'</span>, <span class="string">'CLASSPATH'</span>: <span class="string">'.;C:\\Program Files\\Java\\jdk1.8.0_131\\lib;C:\\Program Files\\Java\\jdk1.8.0_131\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.8.0_131\\lib\\tools.jar;D:\\apache-ant-1.10.3\\lib'</span>, <span class="string">'COMMONPROGRAMFILES'</span>: <span class="string">'C:\\Program Files\\Common Files'</span>, <span class="string">'COMMONPROGRAMFILES(X86)'</span>: <span class="string">'C:\\Program Files (x86)\\Common Files'</span>, <span class="string">'COMMONPROGRAMW6432'</span>: <span class="string">'C:\\Program Files\\Common Files'</span>, <span class="string">'COMPUTERNAME'</span>: <span class="string">'DESKTOP-EPNA62A'</span>, <span class="string">'COMSPEC'</span>: <span class="string">'C:\\Windows\\system32\\cmd.exe'</span>, <span class="string">'HOMEDRIVE'</span>: <span class="string">'C:'</span>, <span class="string">'HOMEPATH'</span>: <span class="string">'\\Users\\dar'</span>, <span class="string">'JAVA_HOME'</span>: <span class="string">'C:\\Program Files\\Java\\jdk1.8.0_131'</span>, <span class="string">'LOCALAPPDATA'</span>: <span class="string">'C:\\Users\\dar\\AppData\\Local'</span>, <span class="string">'LOGONSERVER'</span>: <span class="string">'\\\\DESKTOP-EPNA62A'</span>, <span class="string">'MYSQL_HOME'</span>: <span class="string">'C:\\Program Files\\MySQL\\MySQL Server 8.0'</span>, <span class="string">'NUMBER_OF_PROCESSORS'</span>: <span class="string">'4'</span>, <span class="string">'ONEDRIVE'</span>: <span class="string">'C:\\Users\\dar\\OneDrive'</span>, <span class="string">'OS'</span>: <span class="string">'Windows_NT'</span>, <span class="string">'PATH'</span>: <span class="string">'D:\\python\\Scripts\\;D:\\python\\;D:\\apache-ant-1.10.3\\bin;C:\\Program Files\\Java\\jdk1.8.0_131\\bin;C:\\Program Files\\Java\\jdk1.8.0_131\\jre\\bin;C:\\Windows/system32;C:\\Windows;D:\\Node.js\\;C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin;D:\\Microsoft VS Code\\bin;C:\\Users\\dar\\AppData\\Roaming\\npm;C:\\Users\\dar\\AppData\\Local\\GitHubDesktop\\bin'</span>, <span class="string">'PATHEXT'</span>: <span class="string">'.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'</span>, <span class="string">'PROCESSOR_ARCHITECTURE'</span>: <span class="string">'AMD64'</span>, <span class="string">'PROCESSOR_IDENTIFIER'</span>: <span class="string">'Intel64 Family 6 Model 60 Stepping 3, GenuineIntel'</span>, <span class="string">'PROCESSOR_LEVEL'</span>: <span class="string">'6'</span>, <span class="string">'PROCESSOR_REVISION'</span>: <span class="string">'3c03'</span>, <span class="string">'PROGRAMDATA'</span>: <span class="string">'C:\\ProgramData'</span>, <span class="string">'PROGRAMFILES'</span>: <span class="string">'C:\\Program Files'</span>, <span class="string">'PROGRAMFILES(X86)'</span>: <span class="string">'C:\\Program Files (x86)'</span>, <span class="string">'PROGRAMW6432'</span>: <span class="string">'C:\\Program Files'</span>, <span class="string">'PSMODULEPATH'</span>: <span class="string">'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'</span>, <span class="string">'PUBLIC'</span>: <span class="string">'C:\\Users\\Public'</span>, <span class="string">'PYCHARM_HOSTED'</span>: <span class="string">'1'</span>, <span class="string">'PYCHARM_MATPLOTLIB_PORT'</span>: <span class="string">'60789'</span>, <span class="string">'PYTHONIOENCODING'</span>: <span class="string">'UTF-8'</span>, <span class="string">'PYTHONPATH'</span>: <span class="string">'D:\\PyCharm 2018.2\\helpers\\pycharm_matplotlib_backend;E:\\PycharmProjects'</span>, <span class="string">'PYTHONUNBUFFERED'</span>: <span class="string">'1'</span>, <span class="string">'SESSIONNAME'</span>: <span class="string">'Console'</span>, <span class="string">'SYSTEMDRIVE'</span>: <span class="string">'C:'</span>, <span class="string">'SYSTEMROOT'</span>: <span class="string">'C:\\Windows'</span>, <span class="string">'TEMP'</span>: <span class="string">'C:\\Users\\dar\\AppData\\Local\\Temp'</span>, <span class="string">'TMP'</span>: <span class="string">'C:\\Users\\dar\\AppData\\Local\\Temp'</span>, <span class="string">'USERDOMAIN'</span>: <span class="string">'DESKTOP-EPNA62A'</span>, <span class="string">'USERDOMAIN_ROAMINGPROFILE'</span>: <span class="string">'DESKTOP-EPNA62A'</span>, <span class="string">'USERNAME'</span>: <span class="string">'dar'</span>, <span class="string">'USERPROFILE'</span>: <span class="string">'C:\\Users\\dar'</span>, <span class="string">'WINDIR'</span>: <span class="string">'C:\\Windows'</span>&#125;)</span><br><span class="line">\Users\dar.;C:\Program Files\Java\jdk1<span class="number">.8</span><span class="number">.0</span>_131\lib;C:\Program Files\Java\jdk1<span class="number">.8</span><span class="number">.0</span>_131\lib\dt.jar;C:\Program Files\Java\jdk1<span class="number">.8</span><span class="number">.0</span>_131\lib\tools.jar;D:\apache-ant<span class="number">-1.10</span><span class="number">.3</span>\lib</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-常用方法"><a href="#2-常用方法" class="headerlink" title="2 常用方法"></a>2 常用方法</h3><p>为了方便演示，先创建一个路径：./aaa/bbb/ccc/ddd.py</p>
+<h4 id="2-1-os-access-path-mode"><a href="#2-1-os-access-path-mode" class="headerlink" title="2.1 os.access(path,mode)"></a>2.1 os.access(path,mode)</h4><p>access方法用来判断对path的权限。mode可选不同的权限：存在F_OK、可读R_OK、可写W_OK、可执行X_OK。 方法返回一个bool值</p>
+<p>演示代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print(os.access(path, os.F_OK))  </span><br><span class="line">print(os.access(path, os.R_OK))  </span><br><span class="line">print(os.access(path, os.W_OK))  </span><br><span class="line">print(os.access(path, os.X_OK))</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">True</span><br><span class="line">True</span><br><span class="line">True</span><br><span class="line">True</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-os-getcwd"><a href="#2-2-os-getcwd" class="headerlink" title="2.2 os.getcwd()"></a>2.2 os.getcwd()</h4><p>getcwd方法返回当前工作目录的字符串</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\PycharmProjects\practise_20180731</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-3-os-chdir-path"><a href="#2-3-os-chdir-path" class="headerlink" title="2.3 os.chdir(path)"></a>2.3 os.chdir(path)</h4><p>chdir将当前工作目录更改为path。</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  转跳到上一个目录</span></span><br><span class="line">os.chdir(path+<span class="string">"/../"</span>)</span><br><span class="line">print(os.getcwd())</span><br></pre></td></tr></table></figure></p>
+<p>运行结果如下<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\PycharmProjects\practise_20180731\aaa\bbb\ccc</span><br></pre></td></tr></table></figure></p>
+<p>另外：os.chroot(path)表示工作路径的根目录变为path。可以自行实验一下。</p>
+<h4 id="2-4-os-chmod-path-mode"><a href="#2-4-os-chmod-path-mode" class="headerlink" title="2.4 os.chmod(path,mode)"></a>2.4 os.chmod(path,mode)</h4><p>chmod将path的模式修改为mode，类比一下linux命令中的<code>chmod ./test.txt 777</code>。</p>
+<p>虽然Windows支持 chmod()，但只能使用它设置文件的只读标志（通过 stat.S_IWRITE 和 stat.S_IREAD 常量或相应的整数值）。所有其他位被忽略。</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">os.chdir(<span class="string">"../../../"</span>)           </span><br><span class="line">os.chmod(path, <span class="number">775</span>)             </span><br><span class="line">print(os.access(path, os.F_OK)) </span><br><span class="line">print(os.access(path, os.R_OK)) </span><br><span class="line">print(os.access(path, os.W_OK)) </span><br><span class="line">print(os.access(path, os.X_OK))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">True</span><br><span class="line">True</span><br><span class="line">False</span><br><span class="line">True</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-5-os-chown-path-uid-gid"><a href="#2-5-os-chown-path-uid-gid" class="headerlink" title="2.5 os.chown(path, uid, gid)"></a>2.5 os.chown(path, uid, gid)</h4><p>将 path 的所有者和组ID更改为数字 uid 和 gid。要保留其中一个id，请将其设置为-1。有关接受除数字ID之外的名称的更高级别函数，请参阅 shutil.chown()。shutil是另一个模块。</p>
+<h4 id="2-6-os-listdir-path"><a href="#2-6-os-listdir-path" class="headerlink" title="2.6 os.listdir(path)"></a>2.6 os.listdir(path)</h4><p>listdir返回包含 path 给出的目录中条目名称的列表。该列表是任意顺序，并且不包括特殊条目 ‘.’ 和 ‘..’。</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(os.listdir(<span class="string">"./"</span>))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">['aaa', 'ddd.py', 'eee.py', 'os.path_test.py', 'os_test.py', '__init__.py']</span><br></pre></td></tr></table></figure></p>
+<p>另外：os.scandir() 函数返回目录条目以及文件属性信息。函数返回一个迭代器对象。</p>
+<p>下面示例显示了简单使用 scandir() 来显示给定 path 中不以 ‘.’ 开头的所有文件（不包括目录）。 entry.is_file() 呼叫通常不会进行额外的系统调用。演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> os.scandir(<span class="string">"./"</span>) <span class="keyword">as</span> it:</span><br><span class="line">    <span class="keyword">for</span> entry <span class="keyword">in</span> it:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> entry.name.startswith(<span class="string">'.'</span>) <span class="keyword">and</span> entry.is_file():</span><br><span class="line">            print(entry.name)</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">os.path_test.py</span><br><span class="line">os_test.py</span><br><span class="line">__init__.py</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-7-os-mkdir-path-mode"><a href="#2-7-os-mkdir-path-mode" class="headerlink" title="2.7 os.mkdir(path, mode)"></a>2.7 os.mkdir(path, mode)</h4><p>os.mkdir创建一个名为 path 的数字模式为 mode 的目录。如果目录已经存在，则抛出FileExistsError。</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(os.listdir(<span class="string">"./"</span>))</span><br><span class="line">os.mkdir(<span class="string">"test_mkdir"</span>, <span class="number">775</span>)</span><br><span class="line">print(os.listdir(<span class="string">"./"</span>))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'aaa'</span>, <span class="string">'ddd.py'</span>, <span class="string">'eee.py'</span>, <span class="string">'os.path_test.py'</span>, <span class="string">'os_test.py'</span>, <span class="string">'__init__.py'</span>]</span><br><span class="line">[<span class="string">'aaa'</span>, <span class="string">'ddd.py'</span>, <span class="string">'eee.py'</span>, <span class="string">'os.path_test.py'</span>, <span class="string">'os_test.py'</span>, <span class="string">'test_mkdir'</span>, <span class="string">'__init__.py'</span>]</span><br></pre></td></tr></table></figure></p>
+<p>另外：如果想递归生成目录，请使用os.makedirs()</p>
+<h4 id="2-8-os-rmdir-path"><a href="#2-8-os-rmdir-path" class="headerlink" title="2.8 os.rmdir(path)"></a>2.8 os.rmdir(path)</h4><p>os.rmdir能删除空目录path，如果不是空的会报错。</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(os.listdir(<span class="string">"./"</span>))</span><br><span class="line">os.rmdir(<span class="string">"test_mkdir"</span>)</span><br><span class="line">print(os.listdir(<span class="string">"./"</span>))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'aaa'</span>, <span class="string">'ddd.py'</span>, <span class="string">'eee.py'</span>, <span class="string">'os.path_test.py'</span>, <span class="string">'os_test.py'</span>, <span class="string">'test_mkdir'</span>, <span class="string">'__init__.py'</span>]</span><br><span class="line">[<span class="string">'aaa'</span>, <span class="string">'ddd.py'</span>, <span class="string">'eee.py'</span>, <span class="string">'os.path_test.py'</span>, <span class="string">'os_test.py'</span>, <span class="string">'__init__.py'</span>]</span><br></pre></td></tr></table></figure></p>
+<p>另外：</p>
+<ul>
+<li>os.remove(path)删除文件，如果path是目录则报错；</li>
+<li>os.removedirs()递归删除空目录,如果叶子节点目录非空则报错，后面遇到非空目录时会停下；</li>
+<li>为了删除整个目录树，可以使用 shutil.rmtree()。</li>
+</ul>
+<h4 id="2-9-os-rename-src-dst"><a href="#2-9-os-rename-src-dst" class="headerlink" title="2.9 os.rename(src, dst)"></a>2.9 os.rename(src, dst)</h4><p>os.rename重命名文件或目录，src是文件名且dst是新文件名，src是目录名且dst是新目录名，其他情况报错。</p>
+<h4 id="2-10-os-system-command"><a href="#2-10-os-system-command" class="headerlink" title="2.10 os.system(command)"></a>2.10 os.system(command)</h4><p>os.system函数输入一个命令行指令，然后会返回运行结果到标准输出流，函数return值为命令行窗口返回的值。</p>
+<p>演示代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  ping百度的网址，然后打印命令窗口的返回值</span></span><br><span class="line">print(os.system(<span class="string">"ping www.baidu.com"</span>))</span><br></pre></td></tr></table></figure></p>
+<p>运行结果(因为window系统的命令行汉字编码和pycharm文件编码不一样，所以出现了乱码…但是功能还是实现了的嘛= =)：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">���� Ping www.baidu.com [<span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span>] ���� <span class="number">32</span> �ֽڵ�����:</span><br><span class="line">���� <span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span> �Ļظ�: �ֽ�=<span class="number">32</span> ʱ��=<span class="number">3</span>ms TTL=<span class="number">53</span></span><br><span class="line">���� <span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span> �Ļظ�: �ֽ�=<span class="number">32</span> ʱ��=<span class="number">4</span>ms TTL=<span class="number">53</span></span><br><span class="line">���� <span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span> �Ļظ�: �ֽ�=<span class="number">32</span> ʱ��=<span class="number">3</span>ms TTL=<span class="number">53</span></span><br><span class="line">���� <span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span> �Ļظ�: �ֽ�=<span class="number">32</span> ʱ��=<span class="number">4</span>ms TTL=<span class="number">53</span></span><br><span class="line"></span><br><span class="line"><span class="number">163.177</span><span class="number">.151</span><span class="number">.109</span> �� Ping ͳ����Ϣ:</span><br><span class="line">    ���ݰ�: �ѷ��� = <span class="number">4</span>���ѽ��� = <span class="number">4</span>����ʧ = <span class="number">0</span> (<span class="number">0</span>% ��ʧ)��</span><br><span class="line">�����г̵Ĺ���ʱ��(�Ժ���Ϊ��λ):</span><br><span class="line">    ��� = <span class="number">3</span>ms��� = <span class="number">4</span>ms��ƽ�� = <span class="number">3</span>ms</span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure></p>
+<p>我在网上查找了一些解决方法。pycharm默认使用utf-8编码，而window命令行一般是用gbk编码，因此建议是修改file encoding。不过我试了一下好像没什么效果…如果有同学找到了解决方法记得留言呀~</p>
+<p>另外：subprocess 模块提供了更强大的功能，用于生成新进程和检索其结果；使用该模块比使用此功能更可取。有关一些有用的配方，请参阅 subprocess 文档中的 使用 subprocess 模块替换旧功能 部分。</p>
+<h3 id="3-其他"><a href="#3-其他" class="headerlink" title="3 其他"></a>3 其他</h3><p>关于os模块的介绍就到这里了，一般常用的方法大概都讲解到了。如果遇到一些其他方法，可以通过查看源码的方式学习！记住，查看源码是最好的学习方式~.</p>
+<p>下一篇文章，我们开始学习subprocess模块————子进程模块。到时候有更好的方法调用系统的命令行窗口，实现与命令行窗口的交互…</p>
+<blockquote>
+<p>最后让一首歌结束今天的内容~~~</p>
+</blockquote>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=479979076&auto=0&height=32"></iframe>
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/wu-wen-da-54">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/6502350892">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/Ngwind">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'Python之OS模块【二】',
+        owner: 'Ngwind',
+        repo: 'Ngwind.github.io',
+        oauth: {
+            client_id: 'ec0f1527ca1d1cfb8bf8',
+            client_secret: '5eafc4a4871101ebf8157a5e65fcb25fe2717683',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>

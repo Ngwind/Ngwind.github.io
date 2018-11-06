@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="吴文达的博客">
+    <meta name="keyword"  content="测试">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        django初体验 - Ngwind的博客 | Ngwind&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> What doesn&#39;t kill you,make you stronger. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>wenda wu</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2018年10月29日"><span class="toc-text">2018年10月29日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#django-基本使用"><span class="toc-text">django 基本使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件目录"><span class="toc-text">文件目录</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2018年10月30日"><span class="toc-text">2018年10月30日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#django基础概念"><span class="toc-text">django基础概念</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2018年10月31日"><span class="toc-text">2018年10月31日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目结构"><span class="toc-text">项目结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wsgi-py文件"><span class="toc-text">wsgi.py文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#urls-py文件"><span class="toc-text">urls.py文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-py文件"><span class="toc-text">settings.py文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#django的应用"><span class="toc-text">django的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建应用"><span class="toc-text">创建应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用文件目录组成"><span class="toc-text">应用文件目录组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建第一个页面-响应"><span class="toc-text">创建第一个页面(响应)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑blog-views"><span class="toc-text">编辑blog.views</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑urls-py"><span class="toc-text">编辑urls.py</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2018年11月1日"><span class="toc-text">2018年11月1日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#django的templates"><span class="toc-text">django的templates</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建templates"><span class="toc-text">创建templates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑views-py"><span class="toc-text">编辑views.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑urls-py-1"><span class="toc-text">编辑urls.py</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#django的models"><span class="toc-text">django的models</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑models-py"><span class="toc-text">编辑models.py</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行migrate"><span class="toc-text">执行migrate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用models-py"><span class="toc-text">使用models.py</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2018年11月6日"><span class="toc-text">2018年11月6日</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#django的admin"><span class="toc-text">django的admin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#管理员账号注册"><span class="toc-text">管理员账号注册</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> What doesn&#39;t kill you,make you stronger. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        django初体验
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2018-11-06 12:56:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#python" title="python">python</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#django" title="django">django</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
+        <h1 id="2018年10月29日"><a href="#2018年10月29日" class="headerlink" title="2018年10月29日"></a>2018年10月29日</h1><h2 id="django-基本使用"><a href="#django-基本使用" class="headerlink" title="django 基本使用"></a>django 基本使用</h2><ul>
+<li>创建新工程：django-admin startproject 工程名</li>
+<li>创建新应用：django-admin startapp 应用名</li>
+<li>启动服务：python manage.py runserver 0.0.0.0:8000 </li>
+</ul>
+<h2 id="文件目录"><a href="#文件目录" class="headerlink" title="文件目录"></a>文件目录</h2><ul>
+<li>工程配置文件：setting.py</li>
+<li>项目管理(操作)文件：manage.py</li>
+</ul>
+<h1 id="2018年10月30日"><a href="#2018年10月30日" class="headerlink" title="2018年10月30日"></a>2018年10月30日</h1><h2 id="django基础概念"><a href="#django基础概念" class="headerlink" title="django基础概念"></a>django基础概念</h2><ol>
+<li>url配置：建立url和响应函数之间的关系。</li>
+<li>视图views：想要客户http请求，进行逻辑处理，返回给用户http页面。响应函数都写在view文件中。</li>
+<li>模型models：描述服务器存储的数据（数据库的表，另外django使用orm）</li>
+<li>模板 templates：用来生产html页面，返回给用户的html，是由数据（模型）和模板渲染出来的</li>
+</ol>
+<h1 id="2018年10月31日"><a href="#2018年10月31日" class="headerlink" title="2018年10月31日"></a>2018年10月31日</h1><h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── manage.py</span><br><span class="line">└── myblog</span><br><span class="line"> ├── __init__.py</span><br><span class="line"> ├── settings.py</span><br><span class="line"> ├── urls.py</span><br><span class="line"> └── wsgi.py</span><br></pre></td></tr></table></figure>
+<h3 id="wsgi-py文件"><a href="#wsgi-py文件" class="headerlink" title="wsgi.py文件"></a>wsgi.py文件</h3><p>全称：python web server gatewagy interface(python服务器网关接口)<br>作用：Python应用与web服务器之间的接口</p>
+<h3 id="urls-py文件"><a href="#urls-py文件" class="headerlink" title="urls.py文件"></a>urls.py文件</h3><p>作用：url配置文件。Django项目中所有地址(页面)都需要我们自己去配置其url</p>
+<h3 id="settings-py文件"><a href="#settings-py文件" class="headerlink" title="settings.py文件"></a>settings.py文件</h3><p>作用：项目的配置文件。里面包含了数据库，web应用，时间等各种配置</p>
+<h2 id="django的应用"><a href="#django的应用" class="headerlink" title="django的应用"></a>django的应用</h2><p>django的一个项目(project)是由多个应用(app)组成。每个app实现不同的功能</p>
+<h3 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h3><p>命令语句:<code>python manage.py startapp 应用名</code>.例如：<code>python manage.py startapp blog</code>创建完应用后，还需要在settings.py文件中声明应用</p>
+<h3 id="应用文件目录组成"><a href="#应用文件目录组成" class="headerlink" title="应用文件目录组成"></a>应用文件目录组成</h3><p>项目文件下会生成一个应用文件，文件名是应用的名字.例如之前的命令创建了一个blog的文件在myblog下面。blog文件的组成如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── admin.py</span><br><span class="line">├── apps.py</span><br><span class="line">├── __init__.py</span><br><span class="line">├── migrations</span><br><span class="line">│   └── __init__.py</span><br><span class="line">├── models.py</span><br><span class="line">├── tests.py</span><br><span class="line">└── views.py</span><br></pre></td></tr></table></figure></p>
+<p>文件作用：</p>
+<ul>
+<li>migrations:数据迁移模块文件</li>
+<li>admin.py：应用后台管理系统配置文件</li>
+<li>apps.py:应用配置文件</li>
+<li>models.py:数据模块，使用orm框架。类似mvc模式中的models</li>
+<li>tests.py:自动化测试模块，可以编写测试脚本</li>
+<li>views.py：执行响应代码所在的模块，代码逻辑处理的主要地带。项目中大部分代码均在此编写</li>
+</ul>
+<h2 id="创建第一个页面-响应"><a href="#创建第一个页面-响应" class="headerlink" title="创建第一个页面(响应)"></a>创建第一个页面(响应)</h2><h3 id="编辑blog-views"><a href="#编辑blog-views" class="headerlink" title="编辑blog.views"></a>编辑blog.views</h3><p>每一个响应页面对应一个函数，函数必须返回一个响应。函数必须存在一个参数，一般约定为request。每个响应对应一个url，后面还需要在urls.py文件中配置url。</p>
+<p>例如,创建一个显示hello world文本的响应页面：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">"Hello,world!"</span>)</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="编辑urls-py"><a href="#编辑urls-py" class="headerlink" title="编辑urls.py"></a>编辑urls.py</h3><p>在urls.py中有一个urlpatterns列表。urlpatterns列表将URL对应到views。有关详细信息，请参阅：https：//docs.djangoproject.com/en/2.1/topics/http/urls/</p>
+<p>列举2种方法：</p>
+<ol>
+<li>Function views<ul>
+<li>先添加import：from my_app import views</li>
+<li>然后添加一个url和views的匹配：path(‘’, views.home, name=’home’)</li>
+</ul>
+</li>
+<li>Including another URLconf<ul>
+<li>先添加include()方法: from django.urls import include, path</li>
+<li>然后添加一个url和urls文件的匹配：path(‘blog/‘, include(‘blog.urls’))</li>
+</ul>
+</li>
+</ol>
+<p>myblog/urls.py文件:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path, include</span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">'blog/'</span>, include(<span class="string">'blog.urls'</span>)),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>blog/urls.py文件:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> re_path</span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    re_path(<span class="string">'^$'</span>, views.index),</span><br><span class="line">    re_path(<span class="string">''</span>, views.blog_other),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="2018年11月1日"><a href="#2018年11月1日" class="headerlink" title="2018年11月1日"></a>2018年11月1日</h1><h2 id="django的templates"><a href="#django的templates" class="headerlink" title="django的templates"></a>django的templates</h2><p>django使用templates来存放模板页面（html文件）。</p>
+<h3 id="创建templates"><a href="#创建templates" class="headerlink" title="创建templates"></a>创建templates</h3><ul>
+<li>第一步，在应用目录下，创建一个<code>template</code>文件夹</li>
+<li><p>第二步，在<code>templates</code>文件夹中再创建一个<code>blog</code>文件夹，在其中创建html文件（例如创建一个templates.html)。</p>
+  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;&#123; name &#125;&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">         <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 这样，模板文件就完成了。</p>
+</li>
+</ul>
+<h3 id="编辑views-py"><a href="#编辑views-py" class="headerlink" title="编辑views.py"></a>编辑views.py</h3><p>接下来，需要在views.py中编写一个响应函数来返回这个html页面。<br>实例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render //导入render方法</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">blog_render</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">"blog/templates.html"</span>, &#123;<span class="string">"name"</span>: <span class="string">"wuwenda"</span>&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>render主要接受三个参数：request对象、模板html页面地址、一个字典变量。在html中使用来引用字典中的变量。render函数会返回一个HttpResponse对象。</p>
+<h3 id="编辑urls-py-1"><a href="#编辑urls-py-1" class="headerlink" title="编辑urls.py"></a>编辑urls.py</h3><p>最后，别忘了编辑urls.py文件中的页面和响应函数映射.在urls.py的urlpattern列表中加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re_path(<span class="string">"^templates/$"</span>, views.blog_templates),</span><br></pre></td></tr></table></figure></p>
+<p>运行服务，输入url:<code>127.0.0.1:8000/blog/templates/</code>就可以返回templates.html页面啦</p>
+<h2 id="django的models"><a href="#django的models" class="headerlink" title="django的models"></a>django的models</h2><p>django提供了一个models来存放数据，使用的是orm(对象关系映射)思想。在models.py中编写数据结构。然后再views.py的响应函数中使用它。</p>
+<h3 id="编辑models-py"><a href="#编辑models-py" class="headerlink" title="编辑models.py"></a>编辑models.py</h3><p>models.py中，创建一个继承自model。Models的class，表示一张表。在类中创建属性，表示一个字段。示例：</p>
+<p>创建一个文章的表，表的字段有varchar型的title、文本型的content.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    title = models.CharField(max_length=<span class="number">32</span>, default=<span class="string">"我的标题"</span>)</span><br><span class="line">    content = models.TextField(null=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="执行migrate"><a href="#执行migrate" class="headerlink" title="执行migrate"></a>执行migrate</h3><p>编写好数据结构后，并不能直接使用，先需要运行命令进行数据迁移（同步）</p>
+<p>在项目目录下运行下面两个命令：</p>
+<ul>
+<li><code>python manage.py makemigration</code> —-准备同步数据</li>
+<li><code>python manage.py migarte</code> —-同步数据</li>
+</ul>
+<h3 id="使用models-py"><a href="#使用models-py" class="headerlink" title="使用models.py"></a>使用models.py</h3><p>现在view.py中引入models模块，然后可以创建一个models中的类的对象。<br>例如：获得artcile表中主键=1的那一行数据，然后存在一个article对象中返回，并且把这个数据加入到templates页面中返回。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">blog_models</span><span class="params">(request)</span>:</span></span><br><span class="line">    article = models.Article.objects.get(pk=<span class="number">1</span>)</span><br><span class="line">    list_c = &#123;<span class="string">"name"</span>: <span class="string">"this is name"</span>, <span class="string">"article"</span>: article&#125;</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">"blog/models.html"</span>, list_c)</span><br></pre></td></tr></table></figure></p>
+<p>新创建一个templates文件(models.html)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">title</span>&gt;</span>title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; article.title &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; article.content &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最后，别忘了编辑urls.py文件中的页面和响应函数映射.在urls.py的urlpattern列表中加入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">re_path(<span class="string">"^models/$"</span>, views.blog_models),</span><br></pre></td></tr></table></figure></p>
+<p>运行服务，输入url:<code>127.0.0.1:8000/blog/models/</code>就可以返回models.html页面啦</p>
+<h1 id="2018年11月6日"><a href="#2018年11月6日" class="headerlink" title="2018年11月6日"></a>2018年11月6日</h1><h2 id="django的admin"><a href="#django的admin" class="headerlink" title="django的admin"></a>django的admin</h2><p> admin是django自带的管理后台，通过在 域名后加<code>/admin</code>进入管理后台</p>
+<h3 id="管理员账号注册"><a href="#管理员账号注册" class="headerlink" title="管理员账号注册"></a>管理员账号注册</h3><p>要使用admin需要先注册一个账号。在项目目录下，使用命令<code>python manage.py createsuperuser</code>.</p>
+<p>为了能够在后台管理数据库数据，还需要添加配置。在应用目录下的admin.py文件中添加配置：<br>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Article</span><br><span class="line"></span><br><span class="line">admin.site.register(Article)</span><br></pre></td></tr></table></figure></p>
+<p>就是添加model.py中的类（数据库表）</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">赞赏</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/wu-wen-da-54">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/6502350892">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/Ngwind">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="/js/gitment.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: 'django初体验',
+        owner: 'Ngwind',
+        repo: 'Ngwind.github.io',
+        oauth: {
+            client_id: 'ec0f1527ca1d1cfb8bf8',
+            client_secret: '5eafc4a4871101ebf8157a5e65fcb25fe2717683',
+        },
+    })
+    gitment.render('comment-container')
+</script>
+
+</html>
