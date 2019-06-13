@@ -1,0 +1,259 @@
+---
+title: django初体验
+tags:
+  - django
+  - python
+date: 2018-11-06 12:56:00
+---
+
+# 2018年10月29日
+
+## django 基本使用
+
+- 创建新工程：django-admin startproject 工程名
+- 创建新应用：django-admin startapp 应用名
+- 启动服务：python manage.py runserver 0.0.0.0:8000 
+
+## 文件目录
+
+- 工程配置文件：setting.py
+- 项目管理(操作)文件：manage.py
+
+# 2018年10月30日
+
+## django基础概念
+
+1. url配置：建立url和响应函数之间的关系。
+2. 视图views：想要客户http请求，进行逻辑处理，返回给用户http页面。响应函数都写在view文件中。
+3. 模型models：描述服务器存储的数据（数据库的表，另外django使用orm）
+4. 模板 templates：用来生产html页面，返回给用户的html，是由数据（模型）和模板渲染出来的
+
+# 2018年10月31日
+
+## 项目结构 
+```
+    .
+    ├── manage.py
+    └── myblog
+     ├── __init__.py
+     ├── settings.py
+     ├── urls.py
+     └── wsgi.py
+```
+### wsgi.py文件
+
+全称：python web server gatewagy interface(python服务器网关接口)
+作用：Python应用与web服务器之间的接口
+
+### urls.py文件
+
+作用：url配置文件。Django项目中所有地址(页面)都需要我们自己去配置其url
+
+### settings.py文件
+
+作用：项目的配置文件。里面包含了数据库，web应用，时间等各种配置
+
+## django的应用
+
+django的一个项目(project)是由多个应用(app)组成。每个app实现不同的功能
+
+### 创建应用
+
+命令语句:`python manage.py startapp 应用名`.例如：`python manage.py startapp blog`创建完应用后，还需要在settings.py文件中声明应用
+
+### 应用文件目录组成
+
+项目文件下会生成一个应用文件，文件名是应用的名字.例如之前的命令创建了一个blog的文件在myblog下面。blog文件的组成如下：
+```
+.
+├── admin.py
+├── apps.py
+├── __init__.py
+├── migrations
+│   └── __init__.py
+├── models.py
+├── tests.py
+└── views.py
+```
+文件作用：
+- migrations:数据迁移模块文件
+- admin.py：应用后台管理系统配置文件
+- apps.py:应用配置文件
+- models.py:数据模块，使用orm框架。类似mvc模式中的models
+- tests.py:自动化测试模块，可以编写测试脚本
+- views.py：执行响应代码所在的模块，代码逻辑处理的主要地带。项目中大部分代码均在此编写
+
+## 创建第一个页面(响应)
+
+### 编辑blog.views
+
+每一个响应页面对应一个函数，函数必须返回一个响应。函数必须存在一个参数，一般约定为request。每个响应对应一个url，后面还需要在urls.py文件中配置url。
+
+例如,创建一个显示hello world文本的响应页面：
+```python
+from django.http import HttpResponse
+# Create your views here.
+
+def index(request):
+    return HttpResponse("Hello,world!")
+    pass
+
+```
+
+### 编辑urls.py
+在urls.py中有一个urlpatterns列表。urlpatterns列表将URL对应到views。有关详细信息，请参阅：https：//docs.djangoproject.com/en/2.1/topics/http/urls/
+
+列举2种方法：
+1. Function views
+    - 先添加import：from my_app import views
+    - 然后添加一个url和views的匹配：path('', views.home, name='home')
+2. Including another URLconf
+    - 先添加include()方法: from django.urls import include, path
+    - 然后添加一个url和urls文件的匹配：path('blog/', include('blog.urls'))
+
+myblog/urls.py文件:
+
+```python
+from django.contrib import admin
+from django.urls import path, include
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('blog/', include('blog.urls')),
+]
+
+```
+
+blog/urls.py文件:
+
+```python
+from django.urls import re_path
+from . import views
+
+urlpatterns = [
+    re_path('^$', views.index),
+    re_path('', views.blog_other),
+]
+
+```
+
+
+
+
+# 2018年11月1日
+
+## django的templates
+
+django使用templates来存放模板页面（html文件）。
+
+### 创建templates
+
+- 第一步，在应用目录下，创建一个`template`文件夹
+- 第二步，在`templates`文件夹中再创建一个`blog`文件夹，在其中创建html文件（例如创建一个templates.html)。
+    ```html
+   <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>{{ name }}</title>
+            </head>
+            <body>
+
+            </body>
+        </html>
+    ```
+   这样，模板文件就完成了。
+
+### 编辑views.py
+
+接下来，需要在views.py中编写一个响应函数来返回这个html页面。
+实例：
+```python
+from django.shortcuts import render //导入render方法
+
+def blog_render(request):
+    return render(request, "blog/templates.html", {"name": "wuwenda"})  
+```
+render主要接受三个参数：request对象、模板html页面地址、一个字典变量。在html中使用{{key}}来引用字典中的变量。render函数会返回一个HttpResponse对象。
+
+### 编辑urls.py
+
+最后，别忘了编辑urls.py文件中的页面和响应函数映射.在urls.py的urlpattern列表中加入：
+```python
+    re_path("^templates/$", views.blog_templates),
+```
+运行服务，输入url:`127.0.0.1:8000/blog/templates/`就可以返回templates.html页面啦
+
+## django的models
+
+django提供了一个models来存放数据，使用的是orm(对象关系映射)思想。在models.py中编写数据结构。然后再views.py的响应函数中使用它。
+
+### 编辑models.py
+
+models.py中，创建一个继承自model。Models的class，表示一张表。在类中创建属性，表示一个字段。示例：
+
+创建一个文章的表，表的字段有varchar型的title、文本型的content. 
+```python
+class Article(models.Model):
+    title = models.CharField(max_length=32, default="我的标题")
+    content = models.TextField(null=True)
+
+```
+### 执行migrate
+
+编写好数据结构后，并不能直接使用，先需要运行命令进行数据迁移（同步）
+
+在项目目录下运行下面两个命令：
+- `python manage.py makemigration` ----准备同步数据
+- `python manage.py migarte` ----同步数据
+
+### 使用models.py
+
+现在view.py中引入models模块，然后可以创建一个models中的类的对象。
+例如：获得artcile表中主键=1的那一行数据，然后存在一个article对象中返回，并且把这个数据加入到templates页面中返回。
+```python
+from . import models
+
+def blog_models(request):
+    article = models.Article.objects.get(pk=1)
+    list_c = {"name": "this is name", "article": article}
+    return render(request, "blog/models.html", list_c)
+```
+新创建一个templates文件(models.html)
+```html
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>title</title>
+        </head>
+        <body>
+            <h1>{{ article.title }}</h1>
+            <p>{{ article.content }}</p>
+        </body>
+    </html>
+```
+
+最后，别忘了编辑urls.py文件中的页面和响应函数映射.在urls.py的urlpattern列表中加入：
+```python
+    re_path("^models/$", views.blog_models),
+```
+运行服务，输入url:`127.0.0.1:8000/blog/models/`就可以返回models.html页面啦
+
+# 2018年11月6日
+
+## django的admin
+ admin是django自带的管理后台，通过在 域名后加`/admin`进入管理后台
+
+### 管理员账号注册
+要使用admin需要先注册一个账号。在项目目录下，使用命令`python manage.py createsuperuser`.
+
+为了能够在后台管理数据库数据，还需要添加配置。在应用目录下的admin.py文件中添加配置：
+例如：
+```python
+from django.contrib import admin
+from .models import Article
+
+admin.site.register(Article)
+
+```
+就是添加model.py中的类（数据库表）

@@ -1,0 +1,151 @@
+---
+title: 三、【fiddler】之修改响应内容
+tags:
+  - fiddler
+date: 2018-08-13 12:01:10
+---
+
+### 前言
+
+本节介绍使用fiddler的autoresponder来截获并且修改服务器的响应。
+>参考文章：https://docs.telerik.com/fiddler/KnowledgeBase/AutoResponder
+
+### AutoResponder的介绍
+
+Fiddler的AutoResponder选项卡允许您从本地磁盘返回文件，而不是将请求发送到服务器。
+
+打开autoresponder选项，ui如图所示：
+
+![](/img/2018-08-13 155331.png)
+
+- 3个勾选框
+  - Enable rule 勾选此项表示规则生效
+  - Unmatched request passthroght 勾选此项表示没有匹配上规则的请求可以通过
+  - EnableLatency 勾选此项表示响应延迟设置生效
+- 2个按钮
+  - Add Rule 点击按钮新增一个规则
+  - Import... 点击按钮导入本地已有规则
+- 规则列表 
+  - If request matches 显示匹配规则
+  - then respond with 显示修改后的响应
+  - Latency 显示延迟
+  - Comments 显示备注
+- 规则编辑器
+  - rules 关键部分，匹配的规则。默认给出了很多种匹配规则
+  - match 关键部分，匹配后对进行的操作
+  - match only once
+  - test 测试匹配效果
+  - save 保存编辑内容
+  
+####  创建AutoResponder规则
+废话少说，我们示范一个使用autoresponder修改百度页面图片的例子。
+
+首先打开fiddler抓包，然后在浏览器中打开`www.baidu.com`,之后在fiddler里就可以看到一些数据包了。
+
+![](/img/2018-08-13 170143.png)
+
+查看这个请求的响应，是一个icon图片。把图片保存到本地，然后再进行一些修改。
+
+![](/img/2018-08-13 170459.ico)
+
+接着，我们切换到autoresponder界面，把请求:`https://www.baidu.com/favicon.ico`拖拽到autoresponder界面（自己手动输入也行）。
+
+![](/img/2018-08-13 170813.jpg)
+
+然后是关键的一步，修改请求内容。选择刚刚创建的rule，把响应改为使用本地文件：
+
+![](/img/2018-08-13 171006.png)
+
+把之前修改的本地文件作为服务器响应文件：
+
+![](/img/2018-08-13 171046.png)
+
+不要忘记点击save、勾选enable rule，并且清除一些浏览器缓存。接下来我们再访问一次`www.baidu.com`,观察页面显示情况。
+
+![](/img/2018-08-13 171522.jpg)
+
+可以发现，百度页面的icon图成功替换成了我们本地的图片！
+
+#### Matching Rules
+
+##### 字符串匹配
+
+Fiddler将匹配字符串文字（不区分大小写）
+
+##### 不包含字符串匹配
+
+仅当字符串不匹配时才应用该规则
+
+##### 完全匹配
+
+Fiddler支持精确的，区分大小写的匹配语法，用于以exact开头的表达式
+
+##### 正则表达式
+
+Fiddler支持以正则表达式开头的表达式的正则表达式语法。
+正则表达式将用于使用“操作”列中的字符串替换入站URL。
+使用。+匹配一个或多个字符的序列，或。*匹配零个或多个字符。
+在正则表达式的前面使用^表示“URL的开头”，并在正则表达式的尾部使用$表示“URL的结尾”。
+
+#### Action
+
+除了简单地返回文件，AutoResponder还可以执行特殊操作.
+
+##### filename
+
+返回文件名的内容作为响应。
+
+
+##### http://targetURL
+
+返回targetURL的内容作为响应
+
+##### *redir:http://targetURL
+
+将HTTP重定向返回到目标URL。与简单的URL规则不同，这可以确保客户端知道其请求的位置，以便发送正确的cookie等。
+
+##### *bpu
+
+在发送到服务器之前中断请求。非最终行动。
+
+##### *bpafter
+
+向服务器发送请求并中断响应。非最终行动。
+
+##### *delay:####
+
+通过####毫秒来延迟向服务器发送请求。非最终行动。
+
+##### *header:Name=Value
+
+将具有给定Name的Request标头设置为指定值。如果不存在该名称的标头，则将创建新标头。非最终行动。
+
+##### *flag:Name=Value
+
+将具有给定Name的会话标志设置为指定值。如果不存在该名称的标头，则将创建新标头。非最终行动。
+
+##### *CORSPreflightAllow
+
+返回表示允许CORS的响应
+
+##### *reset
+
+使用TCP / IP RST立即重置客户端连接到客户端
+
+##### *drop
+
+不发生响应，马上关闭客户端连接
+
+##### *exit
+
+终止进程
+
+#### Latency 
+
+你可以设置服务器响应的延迟时间，记得勾选Enable Latency。选择一个规则，然后右键点击-》set latency，就可以设置延时了。
+
+![](/img/2018-08-13 181344.png)
+
+### 最后
+
+AutoResponder 是 Fiddler 比较重要且比较强大的功能之一。可用于拦截某一请求，并重定向到本地的资源，或者使用Fiddler的内置响应。可用于调试服务器端代码而无需修改服务器端的代码和配置，因为拦截和重定向后，实际上访问的是本地的文件或者得到的是Fiddler的内置响应。

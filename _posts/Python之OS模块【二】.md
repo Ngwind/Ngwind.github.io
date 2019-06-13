@@ -1,0 +1,235 @@
+---
+title: Python之OS模块【二】
+tags:
+  - python
+date: 2018-08-03 23:59:41
+---
+
+### 0 前言
+
+上一篇文章介绍了os模块中os.path的使用。这篇文章我们来讲解os模块的使用。主要介绍使用os模块完成对系统文件的操作。os中很多常用方法的功能类似linux中命令：ls、pwd、cd、mkdir、rmdir、chown、chmod、等等...
+接下来简单介绍os模块中一些属性和常用的方法。
+
+---
+
+### 1 常用属性
+
+#### 1.1 os.name 
+
+os.name可以表示当前操作系统类型。其实它是导入的操作系统相关模块的名称。比如：`os.name = "posix"`表示linux系统，`os.name = "nt"`表示window系统。
+
+示例代码如下(我在window下演示)：
+
+```python
+#  os.name表示当前系统名
+print(os.name)   
+```
+运行结果：
+```shell
+nt
+```
+
+#### 1.2 os.environ
+
+os.environ是一个储存系统环境变量的mapping对象。可以使用`os.environ["系统环境变量的key"]`来使用特定的变量。
+
+代码示例如下：
+
+```python
+#  查看环境变量。environ是一个mapping类型对象，保
+print(os.environ)                
+#  例如使用environ["homepath"]查看主目录名称
+print(os.environ['homepath'])    
+print(os.environ['classpath'])    
+```
+运行结果：
+```Python
+environ({'ALLUSERSPROFILE': 'C:\\ProgramData', 'ANT_HOME': 'D:\\apache-ant-1.10.3', 'APPDATA': 'C:\\Users\\dar\\AppData\\Roaming', 'CLASSPATH': '.;C:\\Program Files\\Java\\jdk1.8.0_131\\lib;C:\\Program Files\\Java\\jdk1.8.0_131\\lib\\dt.jar;C:\\Program Files\\Java\\jdk1.8.0_131\\lib\\tools.jar;D:\\apache-ant-1.10.3\\lib', 'COMMONPROGRAMFILES': 'C:\\Program Files\\Common Files', 'COMMONPROGRAMFILES(X86)': 'C:\\Program Files (x86)\\Common Files', 'COMMONPROGRAMW6432': 'C:\\Program Files\\Common Files', 'COMPUTERNAME': 'DESKTOP-EPNA62A', 'COMSPEC': 'C:\\Windows\\system32\\cmd.exe', 'HOMEDRIVE': 'C:', 'HOMEPATH': '\\Users\\dar', 'JAVA_HOME': 'C:\\Program Files\\Java\\jdk1.8.0_131', 'LOCALAPPDATA': 'C:\\Users\\dar\\AppData\\Local', 'LOGONSERVER': '\\\\DESKTOP-EPNA62A', 'MYSQL_HOME': 'C:\\Program Files\\MySQL\\MySQL Server 8.0', 'NUMBER_OF_PROCESSORS': '4', 'ONEDRIVE': 'C:\\Users\\dar\\OneDrive', 'OS': 'Windows_NT', 'PATH': 'D:\\python\\Scripts\\;D:\\python\\;D:\\apache-ant-1.10.3\\bin;C:\\Program Files\\Java\\jdk1.8.0_131\\bin;C:\\Program Files\\Java\\jdk1.8.0_131\\jre\\bin;C:\\Windows/system32;C:\\Windows;D:\\Node.js\\;C:\\Program Files\\MySQL\\MySQL Server 8.0\\bin;D:\\Microsoft VS Code\\bin;C:\\Users\\dar\\AppData\\Roaming\\npm;C:\\Users\\dar\\AppData\\Local\\GitHubDesktop\\bin', 'PATHEXT': '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW', 'PROCESSOR_ARCHITECTURE': 'AMD64', 'PROCESSOR_IDENTIFIER': 'Intel64 Family 6 Model 60 Stepping 3, GenuineIntel', 'PROCESSOR_LEVEL': '6', 'PROCESSOR_REVISION': '3c03', 'PROGRAMDATA': 'C:\\ProgramData', 'PROGRAMFILES': 'C:\\Program Files', 'PROGRAMFILES(X86)': 'C:\\Program Files (x86)', 'PROGRAMW6432': 'C:\\Program Files', 'PSMODULEPATH': 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\', 'PUBLIC': 'C:\\Users\\Public', 'PYCHARM_HOSTED': '1', 'PYCHARM_MATPLOTLIB_PORT': '60789', 'PYTHONIOENCODING': 'UTF-8', 'PYTHONPATH': 'D:\\PyCharm 2018.2\\helpers\\pycharm_matplotlib_backend;E:\\PycharmProjects', 'PYTHONUNBUFFERED': '1', 'SESSIONNAME': 'Console', 'SYSTEMDRIVE': 'C:', 'SYSTEMROOT': 'C:\\Windows', 'TEMP': 'C:\\Users\\dar\\AppData\\Local\\Temp', 'TMP': 'C:\\Users\\dar\\AppData\\Local\\Temp', 'USERDOMAIN': 'DESKTOP-EPNA62A', 'USERDOMAIN_ROAMINGPROFILE': 'DESKTOP-EPNA62A', 'USERNAME': 'dar', 'USERPROFILE': 'C:\\Users\\dar', 'WINDIR': 'C:\\Windows'})
+\Users\dar.;C:\Program Files\Java\jdk1.8.0_131\lib;C:\Program Files\Java\jdk1.8.0_131\lib\dt.jar;C:\Program Files\Java\jdk1.8.0_131\lib\tools.jar;D:\apache-ant-1.10.3\lib
+```
+
+### 2 常用方法
+为了方便演示，先创建一个路径：./aaa/bbb/ccc/ddd.py
+#### 2.1 os.access(path,mode)
+
+access方法用来判断对path的权限。mode可选不同的权限：存在F_OK、可读R_OK、可写W_OK、可执行X_OK。 方法返回一个bool值
+
+演示代码：
+
+```Python
+print(os.access(path, os.F_OK))  
+print(os.access(path, os.R_OK))  
+print(os.access(path, os.W_OK))  
+print(os.access(path, os.X_OK))  
+```
+
+运行结果：
+
+```shell
+True
+True
+True
+True
+```
+#### 2.2 os.getcwd()
+getcwd方法返回当前工作目录的字符串
+
+演示代码：
+```python
+print(os.getcwd()) 
+```
+
+运行结果：
+```shell
+E:\PycharmProjects\practise_20180731
+```
+
+#### 2.3 os.chdir(path)
+
+chdir将当前工作目录更改为path。
+
+演示代码：
+```python
+#  转跳到上一个目录
+os.chdir(path+"/../")
+print(os.getcwd())  
+```
+
+运行结果如下
+```shell
+E:\PycharmProjects\practise_20180731\aaa\bbb\ccc
+```
+另外：os.chroot(path)表示工作路径的根目录变为path。可以自行实验一下。
+
+#### 2.4 os.chmod(path,mode)
+chmod将path的模式修改为mode，类比一下linux命令中的`chmod ./test.txt 777`。
+
+虽然Windows支持 chmod()，但只能使用它设置文件的只读标志（通过 stat.S_IWRITE 和 stat.S_IREAD 常量或相应的整数值）。所有其他位被忽略。
+
+演示代码：
+```python
+os.chdir("../../../")           
+os.chmod(path, 775)             
+print(os.access(path, os.F_OK)) 
+print(os.access(path, os.R_OK)) 
+print(os.access(path, os.W_OK)) 
+print(os.access(path, os.X_OK)) 
+```
+
+运行结果：
+```shell
+True
+True
+False
+True
+```
+
+#### 2.5 os.chown(path, uid, gid)
+将 path 的所有者和组ID更改为数字 uid 和 gid。要保留其中一个id，请将其设置为-1。有关接受除数字ID之外的名称的更高级别函数，请参阅 shutil.chown()。shutil是另一个模块。
+
+#### 2.6 os.listdir(path)
+listdir返回包含 path 给出的目录中条目名称的列表。该列表是任意顺序，并且不包括特殊条目 '.' 和 '..'。
+
+演示代码：
+```python
+print(os.listdir("./"))
+```
+运行结果：
+```shell
+['aaa', 'ddd.py', 'eee.py', 'os.path_test.py', 'os_test.py', '__init__.py']
+```
+
+另外：os.scandir() 函数返回目录条目以及文件属性信息。函数返回一个迭代器对象。
+
+下面示例显示了简单使用 scandir() 来显示给定 path 中不以 '.' 开头的所有文件（不包括目录）。 entry.is_file() 呼叫通常不会进行额外的系统调用。演示代码：
+```python
+with os.scandir("./") as it:
+    for entry in it:
+        if not entry.name.startswith('.') and entry.is_file():
+            print(entry.name)
+```
+运行结果：
+```shell
+os.path_test.py
+os_test.py
+__init__.py
+```
+
+#### 2.7 os.mkdir(path, mode)
+os.mkdir创建一个名为 path 的数字模式为 mode 的目录。如果目录已经存在，则抛出FileExistsError。
+
+演示代码：
+```python
+print(os.listdir("./"))
+os.mkdir("test_mkdir", 775)
+print(os.listdir("./"))
+```
+
+运行结果：
+```python
+['aaa', 'ddd.py', 'eee.py', 'os.path_test.py', 'os_test.py', '__init__.py']
+['aaa', 'ddd.py', 'eee.py', 'os.path_test.py', 'os_test.py', 'test_mkdir', '__init__.py']
+```
+另外：如果想递归生成目录，请使用os.makedirs()
+
+#### 2.8 os.rmdir(path)
+os.rmdir能删除空目录path，如果不是空的会报错。
+
+演示代码：
+```python
+print(os.listdir("./"))
+os.rmdir("test_mkdir")
+print(os.listdir("./"))
+```
+
+运行结果：
+```python
+['aaa', 'ddd.py', 'eee.py', 'os.path_test.py', 'os_test.py', 'test_mkdir', '__init__.py']
+['aaa', 'ddd.py', 'eee.py', 'os.path_test.py', 'os_test.py', '__init__.py']
+```
+
+另外：
+- os.remove(path)删除文件，如果path是目录则报错；
+- os.removedirs()递归删除空目录,如果叶子节点目录非空则报错，后面遇到非空目录时会停下；
+- 为了删除整个目录树，可以使用 shutil.rmtree()。
+
+#### 2.9 os.rename(src, dst)
+os.rename重命名文件或目录，src是文件名且dst是新文件名，src是目录名且dst是新目录名，其他情况报错。
+
+#### 2.10 os.system(command)
+os.system函数输入一个命令行指令，然后会返回运行结果到标准输出流，函数return值为命令行窗口返回的值。
+
+演示代码：
+```python
+#  ping百度的网址，然后打印命令窗口的返回值
+print(os.system("ping www.baidu.com"))
+```
+
+运行结果(因为window系统的命令行汉字编码和pycharm文件编码不一样，所以出现了乱码...但是功能还是实现了的嘛= =)：
+```python
+���� Ping www.baidu.com [163.177.151.109] ���� 32 �ֽڵ�����:
+���� 163.177.151.109 �Ļظ�: �ֽ�=32 ʱ��=3ms TTL=53
+���� 163.177.151.109 �Ļظ�: �ֽ�=32 ʱ��=4ms TTL=53
+���� 163.177.151.109 �Ļظ�: �ֽ�=32 ʱ��=3ms TTL=53
+���� 163.177.151.109 �Ļظ�: �ֽ�=32 ʱ��=4ms TTL=53
+
+163.177.151.109 �� Ping ͳ����Ϣ:
+    ���ݰ�: �ѷ��� = 4���ѽ��� = 4����ʧ = 0 (0% ��ʧ)��
+�����г̵Ĺ���ʱ��(�Ժ���Ϊ��λ):
+    ��� = 3ms��� = 4ms��ƽ�� = 3ms
+0
+```
+我在网上查找了一些解决方法。pycharm默认使用utf-8编码，而window命令行一般是用gbk编码，因此建议是修改file encoding。不过我试了一下好像没什么效果...如果有同学找到了解决方法记得留言呀~
+
+另外：subprocess 模块提供了更强大的功能，用于生成新进程和检索其结果；使用该模块比使用此功能更可取。有关一些有用的配方，请参阅 subprocess 文档中的 使用 subprocess 模块替换旧功能 部分。
+
+### 3 其他
+关于os模块的介绍就到这里了，一般常用的方法大概都讲解到了。如果遇到一些其他方法，可以通过查看源码的方式学习！记住，查看源码是最好的学习方式~.
+
+下一篇文章，我们开始学习subprocess模块————子进程模块。到时候有更好的方法调用系统的命令行窗口，实现与命令行窗口的交互...
+
+
+
+>最后让一首歌结束今天的内容~~~
+
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=479979076&auto=0&height=32"></iframe>
