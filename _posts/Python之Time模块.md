@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Python之Time模块
 tags:
   - python

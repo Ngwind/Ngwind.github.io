@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 路由技术-ospf路由
 date: 2018-09-07 11:08:23
 tags:

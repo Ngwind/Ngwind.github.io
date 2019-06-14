@@ -1,4 +1,5 @@
 ---
+layout: post
 title: django初体验
 tags:
   - django

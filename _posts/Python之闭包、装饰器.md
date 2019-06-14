@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Python之闭包、装饰器
 tags:
   - python

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: centos安装Python3
 tags:
   - linux

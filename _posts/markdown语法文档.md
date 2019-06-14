@@ -1,4 +1,5 @@
 ---
+layout: post
 title: markdown语法文档
 tags:
   - markdown

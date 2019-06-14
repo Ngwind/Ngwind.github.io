@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Python之hashlib模块
 tags:
   - python

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 使用gh-pages+Hexo搭建个人网页教程
 date: 2018-07-27 17:35:02
 tags: 

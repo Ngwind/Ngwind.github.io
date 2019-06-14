@@ -1,4 +1,5 @@
 ---
+layout: post
 title: selenium-环境准备
 tags:
   - selenium

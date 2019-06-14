@@ -1,4 +1,5 @@
 ---
+layout: post
 title: markdown语法示例
 tags:
   - markdown

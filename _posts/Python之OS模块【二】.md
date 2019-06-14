@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Python之OS模块【二】
 tags:
   - python

@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 一、【fiddler】的安装与配置
 tags:
   - fiddler
