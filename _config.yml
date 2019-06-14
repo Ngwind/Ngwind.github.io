@@ -4,10 +4,10 @@
 # ---------------------------------------------------------------
 
 # Site
-title: Wind Ng's Blogs
+title: Andre's Blogs
 subtitle:
 description:
-author: Wind Ng 
+author: Andre Ng 
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: zh-Hans
 date_format: '%Y-%m-%d'
@@ -214,7 +214,7 @@ font:
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 social:
-  GitHub: Link
+  GitHub: https://github.com/Ngwind
 
 
 # Social Links Icons
