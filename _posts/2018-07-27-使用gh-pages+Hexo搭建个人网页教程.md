@@ -25,7 +25,7 @@ tags:
 * 安装了node.js、npm，并了解相关基础知识；
 * 安装了git for windows（或者其它git客户端）
 
-<!--more-->
+<!-- more -->
 
 # 搭建github博客
 
