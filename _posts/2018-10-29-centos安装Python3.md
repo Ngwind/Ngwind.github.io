@@ -12,6 +12,7 @@ date: 2018-10-29 22:04:28
 在阿里云租用了云服务器。想安装python3学习django框架的时候，发现centos自带了python2.7.5.但是我们需要python3.5以上版本。从网上找到linux-centos7安装python3并与python2共存的教程，在此记录一下。
 
 > 引用自:https://www.cnblogs.com/JahanGu/p/7452527.html
+<!-- more -->
 
 ## 查看python版本
 
