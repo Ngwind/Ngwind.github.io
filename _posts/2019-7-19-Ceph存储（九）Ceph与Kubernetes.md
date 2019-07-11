@@ -7,6 +7,7 @@ categories:
   - Ceph存储
 ---
 >转载自:https://github.com/blueboay/ceph-study
+
 ## 创建RBD存储池
 关于RBD存储池的创建参考《[Ceph集群部署之创建RBD接口](https://www.linux-note.cn/?p=85#RBD)》章节
 ## 用户授权
