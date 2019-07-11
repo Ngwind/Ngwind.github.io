@@ -6,8 +6,7 @@ tags:
 categories:
   - Ceph存储
 ---
-# Ceph存储（三）Pool与PG
----
+>转载自:https://github.com/blueboay/ceph-study
 ## 存储池
 存储池（Pool）通常情况下可以为特定的应用程序或者不同类型的数据需求创建专用的存储池，如rdb存储池，rgw存储池，个人专用存储池，某部门专用存储池等。
 客户端在连接到Ceph集群的时候必须指定一个存储池的名称，并完成用户名和密钥的认证方可连接至指定的存储池。 

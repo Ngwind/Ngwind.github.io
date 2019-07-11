@@ -6,8 +6,7 @@ tags:
 categories:
   - Ceph存储
 ---
-# Ceph存储（七）CephFS详解
----
+>转载自:https://github.com/blueboay/ceph-study
 ## CephFS简介
 CephFS作为Ceph集群最早原生支持的客户端，但成熟的最晚，而最成熟的还是RBD。要想在集中中可以使用CephFS客户端，需要创建至少一个metadata Pool，该Pool用来管理元数据信息，并向客户端输出 一个倒置树状的层级结构，这里面存放了真实数据的对应关系，相当于一个索引。而还需要创建至少1个Data Pool用来存储真正的数据。
 ## CephFS客户端
