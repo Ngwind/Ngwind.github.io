@@ -12,6 +12,7 @@ categories:
 RadosGW通常作为对象存储（Object Storage）使用，类型于阿里云OSS。对象存储通常数据于同一平面，一般用于云计算环境中。每一条数据都作为单独的对象存储，拥有唯一的地址来识别数据对象，专为使用在API应用级别进行访问而设计。另外对象存储中的对象通常不需要再修改，如果需要修改只能下载下来修改再重新上传，无法直接修改。
 一般来说，一个对象存储的核心资源有用户（User）、存储桶（Bucket）和对象（Object）。三者的关系是对用户将对象存储到存储系统上的存储桶，存储桶属于某个用户并可以容纳对象，一个用户可以拥有多个存储桶，而一个存储桶用于存储多个对象。大多数对象存储的核心资源类型大同小异，如亚马逊S3、OpenStack Swift与RadosGW。这其中S3与Swift互不兼容，而RadosGW兼容S3与Swift。
 RadosGW为了兼容S3与Swift，Ceph在RadosGW集群的基础上提供了RGW（RadosGateWay）数据抽象层和管理层，它可以原生兼容S3和Swift的API。S3和Swift它们可基于http或https完成数据交换，由RadosGW内建的Civeweb提供服务。它还可以支持主流的Web服务器程序以代理的形式接收用户请求，再转发至RadosGW进程，这些代理服务器包括nginx、haproxy等。  RGW的功能依赖于对象网关守护进程实现，负责向客户端提供REST API接口。出于冗余负载均衡的需求，一个Ceph集群上通常不止一个RadosGW守护进程。在云计算机环境中还会在多个Ceph集群中定义出多个Zone，这些Zone之间通过同步实现冗余功能,在本地环境中通常不需要Zone。 
+<!-- more -->
 ## 关于Civeweb
 RadosGW守护进程内部就由Civeweb实现，通过对Civeweb的配置可以完成对RadosGW的基本管理。
 ### 服务管理

@@ -9,6 +9,7 @@ categories:
 >转载自:https://github.com/blueboay/ceph-study
 ## CephFS简介
 CephFS作为Ceph集群最早原生支持的客户端，但成熟的最晚，而最成熟的还是RBD。要想在集中中可以使用CephFS客户端，需要创建至少一个metadata Pool，该Pool用来管理元数据信息，并向客户端输出 一个倒置树状的层级结构，这里面存放了真实数据的对应关系，相当于一个索引。而还需要创建至少1个Data Pool用来存储真正的数据。
+<!-- more -->
 ## CephFS客户端
 在开始使用CephFS之前需要创建CephFS接口，参考《[集群部署之创建CephFS](https://www.linux-note.cn/?p=85#cephfs)》。 
 Ceph支持两种类型的客户端，一种是基于内核模块ceph.ko，这种需要客户端安装ceph-common程序包，并在/etc/ceph/目录下有ceph.conf集群配置文件和用于认证的密钥文件。

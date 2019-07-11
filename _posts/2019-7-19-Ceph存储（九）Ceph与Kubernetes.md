@@ -12,7 +12,7 @@ categories:
 ## 用户授权
 关于用户授权参考《[Ceph认证与授权](https://www.linux-note.cn/?p=179)》此文章
 此案例授权信息如下。
-
+<!-- more -->
 <pre>
 ~]$ ceph auth add client.osd-mount osd "allow * pool=kvm" mon "allow r"
 </pre>
