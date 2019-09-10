@@ -38,14 +38,14 @@ PG相当于一个虚拟组件，出于集群伸缩，性能方面的考虑。Cep
 ### PG的常见状态
 PG的状态可以由以下命令获取。
 
-<pre>
+```
 ~]$ ceph pg stat
-</pre>
+```
 通常状态为active+clean表示正常，还可以使用以下命令查看详细信息。
 
-<pre>
+```
 ~]$ ceph pg dump
-</pre>
+```
   * Active：表示主OSD和从OSD都处理就绪状态，可常用提供客户端请求。 
   * Clean：表示主OSD和从OSD都处理就绪状态，所有对象的副本均符合期望。
   * Peering：通常此状态表示正在将主OSD和从OSD的对象同步一致的过程，如果这个过程完成后，通过状态就为Active。
@@ -60,97 +60,97 @@ PG的状态可以由以下命令获取。
 ### 创建
 基本格式为。
 
-<pre>
+```
 ~]$ ceph osd pool create <pool name> <pg num> <pgp num> [type]
-</pre>
+```
   * pool name：存储池名称，必须唯一。
   * pg num：存储池中的pg数量。
   * pgp num：用于归置的pg数量，默认与pg数量相等。
   * type：指定存储池的类型，有replicated和erasure， 默认为replicated。
 创建一个副本池如下。
 
-<pre>
+```
 ~]$ ceph osd pool create test01 64
-</pre>
+```
 ### 查看
 列出存储池的相关信息。
 
-<pre>
+```
 ~]$ ceph osd pool ls
 ~]$ ceph osd pool ls detail
-</pre>
+```
 使用detail可以获取更详细的信息。
 获取存储池的统计数据。
 
-<pre>
+```
 ~]$ ceph osd pool stats
 ~]$ ceph osd pool stats detail
-</pre>
+```
 显示存储池的用量信息。
 
-<pre>
+```
 ~]$ rados df
-</pre>
+```
 ### 重命名
 格式如下。
 
-<pre>
+```
 ~]$ ceph osd pool rename <old name> <new name>
-</pre>
+```
 ### 删除
 通常有两个机制防止存储池被删除，第一个为nodelete标志，该标志的值需要为false才可以删除，默认也是false，如果为true就不可以删除该存储池。可以使用以下命令查看该标志的值。
 
-<pre>
+```
 ~]$ ceph osd pool get <pool name> nodelete
-</pre>
+```
 修改的方法如下。
 
-<pre>
+```
 ~]$ ceph osd pool set <pool name> nodelete false
-</pre>
+```
 另一个机制是作用于集群范围，配置参数mon_allow_pool_delete，需要将此参数的值设置为true才可以删除，默认为false，修改方法。
 
-<pre>
+```
 ~]$ ceph tell mon.* injectargs --mon_allow_pool_delete=true
-</pre>
+```
 上面的命令相当于对mon所有节点注入一个配置mon_allow_pool_delete=true，更改完成后立刻生效。
 删除pool。
 
-<pre>
+```
 ~]$ ceph osd pool rm <pool name> <pool name> --yes-i-really-really-mean-it
-</pre>
+```
 需要输入两遍存储池的名称，和--yes-i-really-really-mean-it此选项可删除，删除完成后记得把mon_allow_pool_delete改回去。 
 ### 配额
 当我们有很多存储池的时候，有些作为公共存储池，这时候就有必要为这些存储池做一些配额，限制可存放的文件数，或者空间大小，以免无限的增大影响到集群的正常运行。 
 设置配额。
 
-<pre>
+```
 ~]$ ceph osd pool set-quota <pool name> max_objects|max_bytes <value>
-</pre>
+```
   * max_objects：代表对对象个数进行配额。
   * max_bytes：代表对磁盘大小进行配额。 
 获取配额。
 
-<pre>
+```
 ~]$ ceph osd pool get-quota <pool name>
-</pre>
+```
 ### 配置参数
 对于存储池的配置参数可以通过下面命令获取。
 
-<pre>
+```
 ~]$ ceph osd pool get <pool name> [key name]
-</pre>
+```
 如。
 
-<pre>
+```
 ~]$ ceph osd pool get <pool name> size
-</pre>
+```
 如果不跟个key名称，会输出所有参数，但有个报错。
 设置参数。
 
-<pre>
+```
 ~]$ ceph osd pool set <pool name> <key> <value>
-</pre>
+```
 常用的可用配置参数有。
   * size：存储池中的对象副本数
   * min_size：提供服务所需要的最小副本数，如果定义size为3，min_size也为3，坏掉一个OSD，如果pool池中有副本在此块OSD上面，那么此pool将不提供服务，如果将min_size定义为2，那么还可以提供服务，如果提供为1，表示只要有一块副本都提供服务。
@@ -168,38 +168,38 @@ PG的状态可以由以下命令获取。
 创建存储池快照需要大量的存储空间，取决于存储池的大小。
 创建快照，以下两条命令都可以 。
 
-<pre>
+```
 ~]$ ceph osd pool mksnap <pool name> <snap name>
 ~]$ rados -p <pool name> mksnap <snap name>
-</pre>
+```
 列出快照。
 
-<pre>
+```
 ~]$ rados -p <pool name> lssnap
-</pre>
+```
 回滚至存储池快照。
 
-<pre>
+```
 ~]$ rados -p <pool name> rollback <snap name>
-</pre>
+```
 删除存储池快照，以下两条命令都可以删除。
 
-<pre>
+```
 ~]$ ceph osd pool rmsnap <pool name> <snap name>
 ~]$ rados -p <pool name> rmsnap <snap name>
-</pre>
+```
 ### 压缩
 如果使用bulestore存储引擎，默认提供数据压缩，以节约磁盘空间。 
 启用压缩。
 
-<pre>
+```
 ~]$ ceph osd pool set <pool name> compression_algorithm snappy
-</pre>
+```
 snappy：压缩使用的算法，还有有none、zlib、lz4、zstd和snappy等算法。默认为sanppy。zstd压缩比好，但消耗CPU，lz4和snappy对CPU占用较低，不建议使用zlib。
 
-<pre>
+```
 ~]$ ceph osd pool set <pool name> compression_mode aggressive
-</pre>
+```
 aggressive：压缩的模式，有none、aggressive、passive和force，默认none。表示不压缩，passive表示提示COMPRESSIBLE才压缩，aggressive表示提示INCOMPRESSIBLE不压缩，其它都压缩。force表示始终压缩。
 压缩参数。
   * compression_max_blob_size：压缩对象的最大体积，超过此体积不压缩。默认为0。
@@ -251,17 +251,17 @@ Ceph集群中默认的故障域有。
 #### 获取CRUSH运行图
 获取运行图。
 
-<pre>
+```
 ~]$ ceph osd getcrushmap -o crushmap.bin
-</pre>
+```
 默认情况下crush运行图是一个二进制文件，还需要将二进制转换为文本，方法如下。
 
-<pre>
+```
 ~]$ crushtool -d crushmap.bin -o crushmap.txt
-</pre>
+```
 #### CRUSH运行图解读
 
-<pre>
+```
 # begin crush map
 tunable choose_local_tries 0
 tunable choose_local_fallback_tries 0
@@ -354,7 +354,7 @@ rule replicated_rule {
 }
 
 # end crush map
-</pre>
+```
   * tunable：这里都是一些微调的参数，通常不建议修改，一般得集群规模够大，到了专家级别才会去修改。
   * devices：这下面将列出集群中的所有OSD基本信息。
   * types：这里列出集中可用的故障域，可以自定义。
@@ -363,12 +363,12 @@ rule replicated_rule {
 
 关于buckets定义格式如下。
 
-<pre>
+```
 &lt;bucket name&gt; &lt;name&gt; {
     ……
 }
 
-</pre>
+```
   * bucket name：与故障域的某一名称相同。
   * name：自定义名称。
 
@@ -377,7 +377,7 @@ buckets里面需要定义算法还有此故障域的子故障域，比如host下
 通过自定义修改了CRUSH运行图，现在需要将修改保存，首先是将文本转换为二进制，然后再导入到集群中。
 首先将文本文件保存为二进制文件，然后再将二进制文件导入至集群。
 
-<pre>
+```
 ~]$ crushtool -c crushmap.txt -o crushmap-v2.bin
 ~]$ ceph osd setcrushmap -i crushmap-v2.bin
-</pre>
+```
