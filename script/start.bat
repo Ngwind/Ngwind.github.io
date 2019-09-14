@@ -1,3 +1,6 @@
 @echo off
+
 python ./main.py
-start ..\_posts\
+
+rem start ..\_posts\
+rem pause
