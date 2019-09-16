@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Pytest（一）安装与快速开始
-date: 2019-09-12 16:32:00
+title: Pytest（二）用法与调用
+date: 2019-09-16 12:38:37
 categories: 
   - pytest  
 tags: 
