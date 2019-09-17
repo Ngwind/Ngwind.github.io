@@ -5,7 +5,8 @@ date: 2019-09-17 09:49:34
 categories: 
   - pytest  
 tags: 
-  - linux  
+  - python
+  - pytest
 ---
 
 
