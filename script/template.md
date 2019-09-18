@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Pytest（三）marker与参数化
-date: 2019-09-17 09:49:34
+title: Pytest（四）使用fixture
+date: 2019-09-18 15:07:32
 categories: 
   - pytest  
 tags: 
