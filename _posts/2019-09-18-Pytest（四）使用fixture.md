@@ -14,7 +14,7 @@ pytest的fixtures是使pytest在其他测试框架之上脱颖而出的独特核
 
 ## 创建fixture
 
-给函数增加一个@pytest.fixture()装饰器，pytest就会把该函数作为一个fixture。如果测试函数的形参中填写了fixture，pytest就会在测试函数运行之前调用这些fixtures。fixture可以用来执行通用的工作，也可以return数据给测试函数。
+给函数增加一个`@pytest.fixture()`装饰器，pytest就会把该函数作为一个`fixture`。如果测试函数的形参中填写了fixture，pytest就会在测试函数运行之前调用这些fixtures。fixture可以用来执行通用的工作，也可以return数据给测试函数。
 
 ```python
 import pytest
@@ -27,17 +27,17 @@ def test_func(func):
     assert func == 0
 ```
 
-如上，test_func函数形参中传入了名为func的fixture。pytest会在module中查找名为func的函数。如果在module中找不到fixture，还会在conftest.py中寻找。
+如上，`test_func`函数形参中传入了名为`func`的`fixture`。pytest会在`module`中查找名为func的函数。如果在module中找不到fixture，还会在`conftest.py`中寻找。
 
 ## 通过confest.py共享fixtures
 
-我们可以把fixture放在独立的文件中。但是，想要让所有的测试函数都能使用conftest.py中的fixtures，需要把文件放在所有测试函数文件的最上层目录。
+我们可以把fixture放在独立的文件中。但是，想要让所有的测试函数都能使用`conftest.py`中的fixtures，则需要把文件放在所有测试函数文件的最上层目录。
 
-尽管conftest.py是一个module，但是不要手动import它。它会被pytest自动识别并当作一个本地plugin。（关于插件的内容后面进一步学习）目前，只要把conftest.py想象成一个使得我们可以在目录下放置所有测试函数使用的fixture的地方即可。
+尽管conftest.py是一个`module`，但是不要手动`import`它。它会被pytest自动识别并当作一个本地`plugin`。（关于插件的内容后面进一步学习）目前，只要把conftest.py想象成一个使得我们可以在目录下放置所有测试函数使用的`fixture`的地方即可。
 
 ## 用fixture实现setup和teardown功能
 
-许多测试用例都有setup和teardown的部分，即测试环境准备和环境清理。通过在fixture中使用yield关键字，可以很方便的实现setup和teardown。
+许多测试用例都有`setup`和`teardown`的部分，即测试环境准备和环境清理。通过在fixture中使用`yield`关键字，可以很方便的实现setup和teardown。
 
 ```python
 import pytest
@@ -58,7 +58,7 @@ yield前面的部分，是setup部分，会在测试函数前运行。yield后�
 
 ### 使用--step-show跟踪fixture执行
 
-在运行pytest时，添加--setup-show选项后，能够在输出中观看到fixture执行过程。
+在运行pytest时，添加`--setup-show`选项后，能够在输出中观看到fixture执行过程。
 
 ```shell
 >pytest --setup-show test_fixture.py
@@ -77,12 +77,12 @@ test_fixture.py
 ```
 
 如上，显示了fixtures的调用过程。
-SETUP和TAEADOWN调用了fixture_func。
-S表示session域的fixture、M表示module域的fixture、F表示function域的fixture、C表示class域的fixture。
+`SETUP`和`TAEADOWN`调用了`fixture_func。
+`S`表示`session`域的fixture、`M`表示`module`域的fixture、`F`表示`function`域的fixture、`C`表示`class`域的fixture。
 
 ## 使用fixture提供测试数据
 
-fixture很适合用来提供测试数据。fixture可以return任何数据类型。测试函数使用fixture函数名就能使用return的数据。
+fixture很适合用来提供测试数据。fixture可以`return`任何数据类型。测试函数使用fixture函数名就能使用`return`的数据。
 
 ```python
 import pytest
@@ -97,7 +97,7 @@ def test_func(func1):
 ```
 ## fixture的嵌套
 
-fixture函数的入参也可以填写fixture，这出现了嵌套调用fixture的情况。
+fixture函数的入参也可以填写fixture`，这出现了嵌套调用fixture的情况。
 
 ```python
 import pytest
@@ -151,12 +151,12 @@ test_fixture.py:24: AssertionError
 
 ## 指定fixture的域
 
-pytest.fixture()有个参数叫做scope，用来控制fixture的作用级别。scope可选值为：
+pytest.fixture()有个参数叫做`scope`，用来控制fixture的作用级别。scope可选值为：
 
-- function：作用于每个函数。setup部分在每个函数前运行，teardown部分在每个函数后运行。scope默认为function。
-- class：作用于每个类。无论类中有多少个函数声明了该fixture，只运行一次。
-- module：作用于每个模块。无论一个模块中有多少个函数或方法声明了该fixture，只运行一次。
-- session：作用一次会话（pytest任务）。在一次pytest任务中，该fixture只在启动和结束时运行一次。
+- `function`：作用于每个函数。setup部分在每个函数前运行，teardown部分在每个函数后运行。scope默认为function。
+- `class`：作用于每个类。无论类中有多少个函数声明了该fixture，只运行一次。
+- `module`：作用于每个模块。无论一个模块中有多少个函数或方法声明了该fixture，只运行一次。
+- `session`：作用一次会话（pytest任务）。在一次pytest任务中，该fixture只在启动和结束时运行一次。
 
 ## 通过pytest.mark.usefixtures指定fixtures
 
@@ -191,13 +191,13 @@ class TestClass1():
 
 ```
 
-使用@pytest.mark.usefixtures()装饰器也可以给函数指定fixture。注意，usefixtures()函数里面填的不是**函数名**，而是**函数名字符串**。使用usefixtures()和直接在形参中填写fixtures的方式没有区别。但是，使用usefixtures()方式，测试函数不能获取fixture函数的return值。
+使用`@pytest.mark.usefixtures()`装饰器也可以给函数指定fixture。注意，`usefixtures()`函数里面填的不是**函数名**，而是**函数名字符串**。使用`usefixtures()`和直接在形参中填写fixtures的方式没有区别。但是，使用usefixtures()方式，测试函数不能获取fixture函数的`return`值。
 
-当我们要给一个测试class中的所有测试方法使用相同的fixture，且不需要fixture的return值的时候，可以用@pytest.mark.usefixtures()。
+当我们要给一个测试class中的所有测试方法使用相同的fixture，且不需要fixture的return值的时候，可以用`@pytest.mark.usefixtures()`。
 
 ## 通过autouse参数让测试函数默认使用fixture
 
-pytest.fixture()有个autouse参数。这个参数决定一个fixture是否是默认被使用的。设置autouse=True则fixture默认被所有测试函数使用。autouse默认值为False。
+`pytest.fixture()`有个`autouse`参数。这个参数决定一个fixture是否是默认被使用的。设置`autouse=True`则fixture默认被所有测试函数使用。`autouse`默认值为`False`。
 
 ```python 
 import pytest
@@ -213,11 +213,11 @@ def test_func1():
 
 ```
 
-使用pytest --setup-show 查看函数执行，发现SETUP和TEARDOWN都有fix_func1，但是断言是失败的，因为fix_func1的值不是1，而是一个函数对象。可能这是因为没有在test_func1函数的形参里定义fix_func1。
+使用pytest --setup-show 查看函数执行，发现`SETUP`和`TEARDOWN`都有fix_func1，但是断言是失败的，因为fix_func1的值不是1，而是一个函数对象。可能这是因为没有在test_func1函数的形参里定义fix_func1。
 
 ## 重命名fixture
 
-pytest.fixture()有个name参数，可以让我们重命名fixture。
+pytest.fixture()有个`name`参数，可以让我们重命名fixture。
 
 ```python
 import pytest
