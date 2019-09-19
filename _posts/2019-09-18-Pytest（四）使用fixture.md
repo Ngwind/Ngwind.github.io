@@ -234,3 +234,150 @@ def test_func(new_fix_func):
 ```
 
 ## 参数化fixture
+
+之前学习了使用`@pytest.mark.parameterize(name,values,ids)`对测试函数进行参数化。其实fixture也可以实现参数化，需要用到`@pytest.fixture()`函数中的`params`参数。params参数接收一个`list`,list中的一项就存放一组参数化数据。使用了这个fixture的测试函数会执行`len(list)`次。
+
+在fixture函数中使用`request`这个内置fixture，可以获取params中的参数化数据。注意是`request.param`，这里的`param`没有`s`。
+
+```python
+@pytest.fixture(params=[1,2,3])
+def func4(request):
+    return request.param
+
+
+def test_func3(func4):
+    assert 1 == func4
+
+```
+
+使用`pytest -v `运行上面的代码：
+
+```
+>pytest -v .\test_fixture.py::test_func3
+
+======================================================================= test session starts =======================================================================
+platform win32 -- Python 3.7.0, pytest-5.1.2, py-1.8.0, pluggy-0.13.0 -- d:\python\python.exe
+cachedir: .pytest_cache
+rootdir: E:\pytestLearning\pytest-Learning
+collected 3 items                                                                                                                                                  
+
+test_fixture.py::test_func3[1] PASSED                                                                                                                        [ 33%]
+test_fixture.py::test_func3[2] FAILED                                                                                                                        [ 66%]
+test_fixture.py::test_func3[3] FAILED                                                                                                                        [100%]
+
+============================================================================ FAILURES =============================================================================
+__________________________________________________________________________ test_func3[2] __________________________________________________________________________
+
+func4 = 2
+
+    def test_func3(func4):
+>       assert 1 == func4
+E       assert 1 == 2
+E         -1
+E         +2
+
+test_fixture.py:39: AssertionError
+__________________________________________________________________________ test_func3[3] __________________________________________________________________________
+
+func4 = 3
+
+    def test_func3(func4):
+>       assert 1 == func4
+E       assert 1 == 3
+E         -1
+E         +3
+
+test_fixture.py:39: AssertionError
+=================================================================== 2 failed, 1 passed in 0.04s ===================================================================
+```
+
+可以看到，执行了三次测试函数。
+
+另外，`@pytest.fixture()`类似`@pytest.mark.parameterize()`也有一个`ids`参数。作用也是一样的，可以参考之前的文章。补充一点，`ids`可以接受一个字符串list，也可以接受一个函数名。这个函数是将每组参数化数据对象，转化为字符串的函数。
+
+```python
+class A(object):
+    """
+    参数化数据类
+    """
+
+    def __init__(self, n1, n2, n3):
+        self.n1 = n1
+        self.n2 = n2
+        self.n3 = n3
+
+
+a_list = [A(1, 1, 1), A(2, 2, 2), A(3, 3, 3)]  # 保存参数化数据的列表
+
+
+def a_to_str(a):
+    """
+    将A对象转化为字符串的函数
+    """
+    return "A({},{},{})".format(a.n1, a.n2, a.n3)
+
+
+@pytest.fixture(name="fix", autouse=True, scope="function", params=a_list, ids=a_to_str)
+def fix_func(request):
+    """fixture函数,作用域为函数域，默认使用此fixture,重命名为fix,参数化3组对象，返回每一组参数化数据对象,自定义每组参数化数据的id"""
+    return request.param
+
+
+def test_func(fix):
+    """
+    测试用例函数
+    """
+    assert fix.n1 == 1 and fix.n2 == 1 and fix.n3 == 1
+
+```
+
+运行上面的代码：
+
+```
+> pytest -v .\test_fixture_ids.py
+
+======================================================================= test session starts =======================================================================
+platform win32 -- Python 3.7.0, pytest-5.1.2, py-1.8.0, pluggy-0.13.0 -- d:\python\python.exe
+cachedir: .pytest_cache
+rootdir: E:\pytestLearning\pytest-Learning
+collected 3 items                                                                                                                                                  
+
+test_fixture_ids.py::test_func[A(1,1,1)] PASSED                                                                                                              [ 33%]
+test_fixture_ids.py::test_func[A(2,2,2)] FAILED                                                                                                              [ 66%]
+test_fixture_ids.py::test_func[A(3,3,3)] FAILED                                                                                                              [100%]
+
+============================================================================ FAILURES =============================================================================
+_______________________________________________________________________ test_func[A(2,2,2)] _______________________________________________________________________
+
+fix = <test_fixture_ids.A object at 0x0000025EDF517400>
+
+    def test_func(fix):
+        """
+        测试用例函数
+        """
+>       assert fix.n1 == 1 and fix.n2 == 1 and fix.n3 == 1
+E       assert (2 == 1
+E         -2
+E         +1)
+
+test_fixture_ids.py:38: AssertionError
+_______________________________________________________________________ test_func[A(3,3,3)] _______________________________________________________________________
+
+fix = <test_fixture_ids.A object at 0x0000025EDF58E828>
+
+    def test_func(fix):
+        """
+        测试用例函数
+        """
+>       assert fix.n1 == 1 and fix.n2 == 1 and fix.n3 == 1
+E       assert (3 == 1
+E         -3
+E         +1)
+
+test_fixture_ids.py:38: AssertionError
+=================================================================== 2 failed, 1 passed in 0.11s ===================================================================
+```
+
+至此，我们学习完了`pytest.fixture()`的所有参数（name,scope,autouse,params,ids）~
+
+> 两种参数化功能可以同时使用，效果是叠加的，M*N次。
