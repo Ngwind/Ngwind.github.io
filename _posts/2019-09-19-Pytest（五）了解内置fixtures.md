@@ -67,4 +67,18 @@ module中的所有使用了上面的fixture的测试函数，都共用一个临�
 
 ## 使用pytestconfig
 
-To be contiune....
+pytest有一个内置`fixture`叫做`pytestconfig`。这个fixture是于pytest的配置参数相关的。
+`pytestconfig`这个`fixture`返回一个`_pytest.config.Config`对象。可以调用该对象的属性和方法获取相关配置信息。
+
+## 使用cache
+
+pytest有个内置`fixture`叫做`cache`。这个fixutre是和缓存相关的。可以将一次session的结果保存，然后下一次session运行时，可以获取缓存信息。
+
+使用`pytest --cache-show`可以列出上次测试的结果。
+使用`pytest -lf`可以列出上次失败的测试用例。
+使用`pytest -ff`可以优先执行上次失败的测试用例。
+使用`pytest --clear--cache`可以清除缓存。
+
+此外，如果测试函数使用了`cache`这个内建`fixture`，可以调用`cache.get(key,default)`和`cache.set(key,value)`来保存和获取数据到缓存中。
+
+> 还有其他内置的fixture。等于要用到了，再进一步了解。
