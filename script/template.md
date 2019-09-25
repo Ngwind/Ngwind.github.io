@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Pytest（五）了解内置fixtures
-date: 2019-09-19 14:11:44
+title: Python之requests模块
+date: 2019-09-25 11:41:17
 categories: 
   - pytest  
 tags: 
